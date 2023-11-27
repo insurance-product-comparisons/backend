@@ -21,7 +21,8 @@ jobs:
         with:
           host: 213.189.218.37
           username: root
-          password: ${{ secrets.SERVER_PASSWORD }}
+#          password: ${{ secrets.SERVER_PASSWORD }}
+          key: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
             echo ${{ secrets.SERVER_IP }} > 23.txt
