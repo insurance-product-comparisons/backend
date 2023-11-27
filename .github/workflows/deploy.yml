@@ -24,7 +24,6 @@ jobs:
       #Build Docker image:
       #- name: Build and tag image
       # run: docker compose build
-
       #      - name: Docker login
       #        run: docker login ${{ secrets.DOCKER_LOGIN }} -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PASSWORD }}
 
