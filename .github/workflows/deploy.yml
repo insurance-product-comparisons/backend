@@ -36,4 +36,4 @@ jobs:
             yes|docker system prune -a
       - name: Wait Java app start
         run: sleep 30s
-        shell: echo ${{ secrets.SERVER_IP }}
+        shell: bash
