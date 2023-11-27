@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  application-incuranse-service:
+    build: .
+    container_name: incuranse_service_application
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - SERVER_PORT=8080
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=password
