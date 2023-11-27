@@ -1,11 +1,5 @@
 name: Deploy docker image
-
 on: pull_request
-#on:
-#  push:
-#    branches:
-#      - 'main'
-
 jobs:
   build_docker:
     name: docker compose up
@@ -15,9 +9,9 @@ jobs:
       - name: Wait Java app start UP
         shell: bash
         run: |
-          echo "GH_REPO: $GH_IP"
-        env:
-          GH_IP: "${{ secrets.SERVER_USER }}"
+          echo "GH_REPO"
+#        env:
+#          GH_IP: "${{ secrets.SERVER_USER }}"
 #      - name: executing remote ssh commands using password
 #        uses: appleboy/ssh-action@v1.0.0
 #        with:
@@ -37,3 +31,10 @@ jobs:
 #      - name: Wait Java app start DOWN
 #        run: sleep 30s
 #        shell: bash
+
+
+#on:
+#  push:
+#    branches:
+#      - 'main'
+
