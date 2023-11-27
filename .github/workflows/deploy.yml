@@ -12,8 +12,12 @@ jobs:
     needs: build_docker_image
     runs-on: ubuntu-latest
     steps:
-      - name: Wait Java app start ${{ secrets.SERVER_IP }}
-        run: sleep 30s
+      - name: Wait Java app start
+        shell: bash
+        run: |
+          echo "GH_REPO: $GH_IP"
+        env:
+          GH_IP: ${{ secrets.SERVER_IP }}
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.0
         with:
