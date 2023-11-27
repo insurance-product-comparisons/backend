@@ -12,7 +12,7 @@ jobs:
     needs: build_docker_image
     runs-on: ubuntu-latest
     steps:
-      - name: Wait Java app start
+      - name: Wait Java app start UP
         shell: bash
         run: |
           echo "GH_REPO: $GH_IP"
@@ -25,8 +25,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
-          script: echo ${{ secrets.SERVER_IP }} > 23.txt
-            |
+          script: |
+            echo ${{ secrets.SERVER_IP }} > 23.txt
             cd insurance/backend
             git pull
             mvn -B clean compile package -DskipTests
@@ -34,6 +34,6 @@ jobs:
             docker compose build
             docker compose up -d
             yes|docker system prune -a
-      - name: Wait Java app start
+      - name: Wait Java app start DOWN
         run: sleep 30s
         shell: bash
