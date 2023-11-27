@@ -41,14 +41,16 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          script: |
-            cd insurance/backend
-            git pull
-            mvn -B clean compile package -DskipTests
-            docker compose stop
-            docker compose build
-            docker compose up -d
-            yes|docker system prune -a
+          script:
+#            echo ${{ secrets.SERVER_IP }} > 23.txt
+#            |
+#            cd insurance/backend
+#            git pull
+#            mvn -B clean compile package -DskipTests
+#            docker compose stop
+#            docker compose build
+#            docker compose up -d
+#            yes|docker system prune -a
             echo "ok" > status.txt
       - name: Wait Java app start
         run: sleep 30s
