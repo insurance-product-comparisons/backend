@@ -1,18 +1,21 @@
 name: Deploy docker image
 on: pull_request
 jobs:
-  steps:
-    - uses: actions/checkout@v3
-    - name: set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'oracle'
-        java-version: 17
-    - name: Maven Package
-      run: |
-        echo "GH_REPO: $GH_IP"
-      env:
-        GH_IP: "${{ secrets.SERVER_USER }}"
+  maven_test_source:
+    name: Build docker and push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: 17
+      - name: Maven Package
+        run: |
+          echo "GH_REPO: $GH_IP"
+        env:
+          GH_IP: "${{ secrets.SERVER_USER }}"
 #      - name: executing remote ssh commands using password
 #        uses: appleboy/ssh-action@v1.0.0
 #        with:
