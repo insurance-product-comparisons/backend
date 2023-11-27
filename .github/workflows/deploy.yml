@@ -12,6 +12,8 @@ jobs:
     needs: build_docker_image
     runs-on: ubuntu-latest
     steps:
+      - name: Wait Java app start ${{ secrets.SERVER_IP }}
+        run: sleep 30s
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.0
         with:
