@@ -14,6 +14,7 @@ jobs:
       - name: Maven Package
         run: |
           echo "GH_REPO: $GH_IP"
+          echo ${{ secrets.SERVER_USER }}
         env:
           GH_IP: "${{ secrets.SERVER_USER }}"
 #      - name: executing remote ssh commands using password
