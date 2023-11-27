@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "GH_REPO: $GH_IP"
         env:
-          GH_IP: 123-123
+          GH_IP: ${{ secrets.SERVER_USER }}
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.0
         with:
