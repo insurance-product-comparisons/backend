@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class HelloController {
 
     @GetMapping(value = "/hello")
-    public String hello(){
+    public String hello() {
         return "hello, server time: " + LocalDateTime.now();
     }
 }
