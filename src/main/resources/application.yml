@@ -4,15 +4,16 @@ spring:
     url:http://localhost:${port}
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:54320/insurance_project
+    url: jdbc:postgresql://localhost:5432/insurance_project
     username: sa
     password: password
   jpa:
+    defer-datasource-initialization: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-        ddl-auto: none
+        ddl-auto: create
   sql:
     init:
       mode: always
