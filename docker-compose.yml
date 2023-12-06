@@ -13,17 +13,17 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SERVER_PORT=8080
-      - DATASOURCE_URL=jdbc:postgresql://postgres-service:54320/insurance_project
+      - DATASOURCE_URL=jdbc:postgresql://postgres-service:5432/insurance_project
       - POSTGRES_USER=sa
       - POSTGRES_PASSWORD=password
-      - WAIT_HOSTS=postgres-service:54320
+      - WAIT_HOSTS=postgres-service:5432
   #DB Postgres service
   postgres-service:
     container_name: postgres_container
     image: postgres:15-alpine
     restart: always
     ports:
-      - "54320:54320"
+      - "5432:5432"
     volumes:
       - /var/lib/postgresql/data/
       - ./docker/postgres/init:/docker-entrypoint-initdb.d
@@ -32,9 +32,9 @@ services:
       - POSTGRES_USER=sa
       - POSTGRES_PASSWORD=password
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -h localhost -p 54320 -d insurance_project -U sa" ]
+      test: [ "CMD-SHELL", "pg_isready -h localhost -p 5432 -d insurance_project -U sa" ]
       interval: 10s
       timeout: 5s
       retries: 5
     command:
-      -p 54320
+      -p 5432
