@@ -64,3 +64,12 @@ CREATE TABLE IF NOT EXISTS engine_power (
     CONSTRAINT PK_ENGINE_POWER PRIMARY KEY (ID),
     CONSTRAINT UQ_POWER_COEFFICIENT UNIQUE (COEFFICIENT)
 );
+
+
+CREATE TABLE IF NOT EXISTS base_rates
+(
+    id              SERIAL PRIMARY KEY,
+    transport_type  varchar(255) NOT NULL,
+    min_rate        integer NOT NULL,
+    max_rate        integer NOT NULL
+);
