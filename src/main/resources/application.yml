@@ -8,11 +8,12 @@ spring:
     username: sa
     password: password
   jpa:
+    defer-datasource-initialization: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-        ddl-auto: none
+        ddl-auto: create
   sql:
     init:
       mode: always
