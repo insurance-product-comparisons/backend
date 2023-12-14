@@ -11,6 +11,6 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface BaseRateMapper {
     BaseRateDto baseRateCoefficientToBaseRateDto(BaseRateCoefficient baseRateCoefficient);
-    
+
     List<BaseRateDto> baseRateCoefficientListToBaseRateDtoList(List<BaseRateCoefficient> baseRateCoefficients);
 }
