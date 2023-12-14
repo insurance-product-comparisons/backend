@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.security.InvalidParameterException;
 
-/**
- * Обработчик всех exception прилетающих на REST
- */
 @RestControllerAdvice
 @Slf4j
 public class ErrorHandler {
