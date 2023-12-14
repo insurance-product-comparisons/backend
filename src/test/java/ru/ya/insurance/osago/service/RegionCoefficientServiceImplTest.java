@@ -7,13 +7,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.ya.insurance.repository.osago.RegionCoefficientRepository;
+import ru.ya.insurance.mapper.osago.RegionMapper;
+import ru.ya.insurance.repository.osago.RegionRepository;
 import ru.ya.insurance.service.osago.impl.RegionCoefficientServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 class RegionCoefficientServiceImplTest {
     @Mock
-    private RegionCoefficientRepository mockRegionCoefficientRepository;
+    private RegionRepository mockRegionRepository;
+    @Mock
+    private RegionMapper mockRegionMapper;
 
     @InjectMocks
     private RegionCoefficientServiceImpl regionCoefficientService;
@@ -22,7 +25,7 @@ class RegionCoefficientServiceImplTest {
     @Test
     void findAll() {
         regionCoefficientService.findAll();
-        Mockito.verify(mockRegionCoefficientRepository).findAll();
+        Mockito.verify(mockRegionRepository).findAll();
     }
 
 }
