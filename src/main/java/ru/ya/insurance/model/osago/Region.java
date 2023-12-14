@@ -21,6 +21,7 @@ public class Region {
 
     private String name;
 
-    @OneToMany
-    private List<RegionCoefficient> coefficientList;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "region_id")
+    private List<RegionCoefficient> regionCoefficientList;
 }
