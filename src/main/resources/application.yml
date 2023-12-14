@@ -1,0 +1,20 @@
+spring:
+  server:
+    port:8080
+    url:http://localhost:${port}
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/insurance_project
+    username: sa
+    password: password
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        ddl-auto: create
+  sql:
+    init:
+      mode: always
+      encoding: utf-8
