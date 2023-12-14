@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import ru.ya.insurance.osago.model.BaseRate;
+import ru.ya.insurance.model.osago.BaseRateCoefficient;
+import ru.ya.insurance.service.osago.impl.BaseRateCoefficientServiceImpl;
 
 import java.util.List;
 
@@ -17,16 +18,16 @@ import static org.junit.jupiter.api.Assertions.*;
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 class OsagoServiceImplTestIT {
-    private final OsagoServiceImpl service;
+    private final BaseRateCoefficientServiceImpl service;
 
     @Test
     void shouldReturnBaseRateDtoList() {
-        List<BaseRate> baseRates = service.getVehicleTypes();
+        List<BaseRateCoefficient> baseRateCoefficients = service.getBaseRateList();
 
-        assertEquals(12, baseRates.size());
+        assertEquals(12, baseRateCoefficients.size());
 
-        assertEquals("Мотоциклы, мопеды и лёгкие квадроциклы (\"А\", \"М\")", baseRates.get(0).getTransportType());
-        assertEquals(324, (int) baseRates.get(0).getMinRate());
-        assertEquals(2536, (int) baseRates.get(0).getMaxRate());
+        assertEquals("Мотоциклы, мопеды и лёгкие квадроциклы (\"А\", \"М\")", baseRateCoefficients.get(0).getTransportType());
+        assertEquals(324, (int) baseRateCoefficients.get(0).getMinRate());
+        assertEquals(2536, (int) baseRateCoefficients.get(0).getMaxRate());
     }
 }
