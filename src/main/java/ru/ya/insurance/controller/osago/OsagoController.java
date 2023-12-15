@@ -1,24 +1,21 @@
 package ru.ya.insurance.controller.osago;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
-import ru.ya.insurance.mapper.osago.AgeMapper;
-import ru.ya.insurance.mapper.osago.BaseRateMapper;
-import ru.ya.insurance.mapper.osago.DriverNumberMapper;
-import ru.ya.insurance.mapper.osago.DrivingExperienceMapper;
-import ru.ya.insurance.mapper.osago.EnginePowerMapper;
-import ru.ya.insurance.mapper.osago.KbmMapper;
-import ru.ya.insurance.service.osago.AgeService;
-import ru.ya.insurance.service.osago.BaseRateCoefficientService;
-import ru.ya.insurance.service.osago.DriverNumberCoefficientService;
-import ru.ya.insurance.service.osago.DrivingExperienceService;
-import ru.ya.insurance.service.osago.EnginePowerCoefficientService;
-import ru.ya.insurance.service.osago.RegionCoefficientService;
+import ru.ya.insurance.dto.osago.NewInsuranceRequestDto;
+import ru.ya.insurance.exception.ValidationException;
+import ru.ya.insurance.mapper.osago.*;
+import ru.ya.insurance.service.osago.*;
 import ru.ya.insurance.service.osago.impl.KbmCoefficientServiceImpl;
+import ru.ya.insurance.service.osago.impl.NewInsuranceRequestServiceImpl;
 
+
+@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/osago")
@@ -42,23 +39,28 @@ public class OsagoController {
     private final KbmCoefficientServiceImpl kbmServiceImpl;
     private final KbmMapper kbmMapper;
 
+    private final NewInsuranceRequestServiceImpl newInsuranceRequestService;
+
     private final RegionCoefficientService regionCoefficientService;
 
-    @GetMapping
-    @RequestMapping("/filter-init")
+    @GetMapping("/filter-init")
     public FormFilterInitDto getFilterInitDto() {
 
         FormFilterInitDto formFilterInitDto = new FormFilterInitDto();
 
         formFilterInitDto.setAgeList(ageMapper.ageListToAgeDtoList(ageService.getAgeList()));
 
-        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(drivingExperienceService.getDrivingExperienceList()));
+        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(
+                drivingExperienceService.getDrivingExperienceList()));
 
-        formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(baseRateCoefficientService.getBaseRateList()));
+        formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(
+                baseRateCoefficientService.getBaseRateList()));
 
-        formFilterInitDto.setDriverNumberCoefficientList(driverNumberMapper.driverNumberListToDriverNumberDtoList(driverNumberCoefficientService.getAllDriverNumberCoefficient()));
+        formFilterInitDto.setDriverNumberCoefficientList(driverNumberMapper.driverNumberListToDriverNumberDtoList(
+                driverNumberCoefficientService.getAllDriverNumberCoefficient()));
 
-        formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(enginePowerCoefficientService.getEnginePowerList()));
+        formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(
+                enginePowerCoefficientService.getEnginePowerList()));
 
         formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmServiceImpl.getKbmDtoList()));
 
@@ -66,4 +68,15 @@ public class OsagoController {
 
         return formFilterInitDto;
     }
+
+    @PostMapping("/new-insurance-request")
+    public ResponseEntity<?> addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
+        try {
+            NewInsuranceRequestDto addNewInsuranceRequest = newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(addNewInsuranceRequest);
+        } catch (ValidationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

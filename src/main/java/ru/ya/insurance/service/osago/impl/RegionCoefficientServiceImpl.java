@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.ya.insurance.dto.osago.RegionDto;
 import ru.ya.insurance.dto.osago.SubRegionDto;
+import ru.ya.insurance.exception.NotFoundException;
 import ru.ya.insurance.mapper.osago.RegionMapper;
 import ru.ya.insurance.mapper.osago.SubRegionMapper;
 import ru.ya.insurance.model.osago.RegionCoefficient;
 import ru.ya.insurance.repository.osago.RegionCoefficientRepository;
-import ru.ya.insurance.exception.NotFoundException;
 import ru.ya.insurance.service.osago.RegionCoefficientService;
 
 import java.util.ArrayList;

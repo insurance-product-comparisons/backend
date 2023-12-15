@@ -18,16 +18,17 @@ public class ErrorHandler {
 
     @ExceptionHandler({NotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse handleNotFound(final Exception e) {
+    public ErrorResponse handleNotFoundException(final Exception e) {
         return new ErrorResponse(e.getMessage());
     }
 
     @ExceptionHandler({
+            ValidationException.class,
             MethodArgumentNotValidException.class,
             InvalidParameterException.class
     })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleBadValidation(final Exception e) {
+    public ErrorResponse handleValidationException(final Exception e) {
         return new ErrorResponse("Ошибка валидации данных: " + e.getMessage());
     }
 
@@ -39,7 +40,6 @@ public class ErrorHandler {
         log.error("Server error: {}", e.getMessage());
         return new ErrorResponse("See logs for more information.");
     }
-
 
     @Getter
     private static class ErrorResponse {
