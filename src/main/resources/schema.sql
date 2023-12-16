@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS driver_number_coefficient,
+/*DROP TABLE IF EXISTS driver_number_coefficient,
     age,
     driving_experience,
     age_experience_coefficient,
@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS driver_number_coefficient,
     engine_power_coefficient,
     base_rate_coefficient,
     new_insurance_request
-    CASCADE;
+    CASCADE;*/
 
 
 CREATE TABLE IF NOT EXISTS driver_number_coefficient
@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS base_rate_coefficient
     min_coefficient INTEGER      NOT NULL,
     max_coefficient INTEGER      NOT NULL
 );
+
 
 CREATE TABLE new_insurance_request
 (
