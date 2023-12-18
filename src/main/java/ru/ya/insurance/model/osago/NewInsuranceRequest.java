@@ -9,6 +9,7 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "new_insurance_request")
 public class NewInsuranceRequest {
 
@@ -28,7 +29,7 @@ public class NewInsuranceRequest {
     @Column(name = "situation")
     private String situation;
 
-    @Column(name = "gift", columnDefinition = "BOOLEAN DEFAULT FALSE")
-    boolean isGift;
+    @Column(name = "as_a_gift", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean insuranceAsAGift;
 
 }

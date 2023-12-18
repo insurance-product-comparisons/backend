@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@ToString
 @Getter
 @Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@Builder
 @Table(name = "engine_power_coefficient")
 public class EnginePowerCoefficient {
 

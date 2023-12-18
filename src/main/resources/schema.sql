@@ -95,5 +95,5 @@ CREATE TABLE new_insurance_request
     phone_number VARCHAR(11)  NOT NULL,
     email        VARCHAR(255) NOT NULL,
     situation    VARCHAR(255) NOT NULL,
-    gift         BOOLEAN
+    as_a_gift    BOOLEAN
 );

@@ -31,6 +31,6 @@ public class NewInsuranceRequestDto {
             message = "Описание ситуации должно быть длиной от 20 до 255 символов")
     private String situation;
 
-    private boolean isGift = false;
+    private boolean insuranceAsAGift = false;
 
 }

@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "age_experience_coefficient")
 @IdClass(AgeExperienceCoefficientId.class)
 public class AgeExperienceCoefficient {

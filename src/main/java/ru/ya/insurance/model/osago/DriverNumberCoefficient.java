@@ -1,19 +1,18 @@
 package ru.ya.insurance.model.osago;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "driver_number_coefficient")
 @Getter
 @Setter
-@NoArgsConstructor
+@EqualsAndHashCode
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "driver_number_coefficient")
 public class DriverNumberCoefficient {
 
     @Id
