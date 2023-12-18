@@ -15,8 +15,8 @@ public class NewInsuranceRequestDto {
 
     private Long id;
 
-    @Pattern(regexp = "^[а-яА-Яa-zA-Z- ]{3,50}$",
-            message = "Полное имя должно быть длиной от 3 до 50 символов и содержать только буквы, дефис и пробел")
+    @Pattern(regexp = "^[а-яА-Яa-zA-Z- ]{3,256}$",
+            message = "Полное имя должно быть длиной от 3 до 256 символов и содержать только буквы, дефис и пробел")
     private String fullName;
 
     @Pattern(regexp = "^\\+7[0-9]{10}$",
@@ -27,8 +27,8 @@ public class NewInsuranceRequestDto {
             message = "Введен некорректный Email")
     private String email;
 
-    @Size(min = 20, max = 255,
-            message = "Описание ситуации должно быть длиной от 20 до 255 символов")
+    @Size(min = 1, max = 255,
+            message = "Описание ситуации должно быть длиной от 1 до 500 символов")
     private String situation;
 
     private boolean insuranceAsAGift;
