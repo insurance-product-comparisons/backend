@@ -27,7 +27,7 @@ public class NewInsuranceRequestDto {
             message = "Введен некорректный Email")
     private String email;
 
-    @Size(min = 1, max = 255,
+    @Size(min = 1, max = 500,
             message = "Описание ситуации должно быть длиной от 1 до 500 символов")
     private String situation;
 
