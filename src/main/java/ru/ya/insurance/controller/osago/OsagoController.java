@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
 import ru.ya.insurance.dto.osago.NewInsuranceRequestDto;
-import ru.ya.insurance.exception.ValidationException;
 import ru.ya.insurance.mapper.osago.*;
 import ru.ya.insurance.service.osago.*;
 import ru.ya.insurance.service.osago.impl.KbmCoefficientServiceImpl;
@@ -70,13 +69,10 @@ public class OsagoController {
     }
 
     @PostMapping("/new-insurance-request")
-    public ResponseEntity<?> addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
-        try {
-            NewInsuranceRequestDto addNewInsuranceRequest = newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto);
-            return ResponseEntity.status(HttpStatus.CREATED).body(addNewInsuranceRequest);
-        } catch (ValidationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+    public ResponseEntity<NewInsuranceRequestDto> addNewInsuranceRequest(
+            @Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto));
     }
 
 }

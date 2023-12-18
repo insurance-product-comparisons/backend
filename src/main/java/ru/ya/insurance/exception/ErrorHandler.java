@@ -23,13 +23,13 @@ public class ErrorHandler {
     }
 
     @ExceptionHandler({
-            ValidationException.class,
             MethodArgumentNotValidException.class,
             InvalidParameterException.class
     })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleValidationException(final Exception e) {
-        return new ErrorResponse("Ошибка валидации данных: " + e.getMessage());
+        log.error("Server error: {}", e.getMessage());
+        return new ErrorResponse("See logs for more information.");
     }
 
     @ExceptionHandler({
