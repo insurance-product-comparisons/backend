@@ -1,12 +1,13 @@
 package ru.ya.insurance.model.common;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+// @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "licenses")
@@ -17,6 +18,7 @@ public class License {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
+    @JsonManagedReference
     private Company company;
 
     private String license;

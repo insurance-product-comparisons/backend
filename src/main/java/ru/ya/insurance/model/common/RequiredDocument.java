@@ -1,12 +1,13 @@
 package ru.ya.insurance.model.common;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+// @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "required_documents")
@@ -17,8 +18,8 @@ public class RequiredDocument {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_id")
+    @JsonManagedReference
     private Insurance insurance;
 
-    @Column(name = "document_type")
-    private String documentType;
+    private String document;
 }

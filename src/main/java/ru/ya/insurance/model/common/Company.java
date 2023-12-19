@@ -1,5 +1,6 @@
 package ru.ya.insurance.model.common;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+// @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "companies")
@@ -26,8 +27,10 @@ public class Company {
     private String logo;
 
     @OneToMany(mappedBy = "company")
+    @JsonBackReference
     private List<Insurance> insurances;
 
     @OneToMany(mappedBy = "company")
+    @JsonBackReference
     private List<License> licenses;
 }
