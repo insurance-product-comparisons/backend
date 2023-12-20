@@ -13,6 +13,7 @@ public interface InsuranceOfferCardMapper {
     @Mapping(source = "company.logo", target = "companyLogo")
     @Mapping(source = "company.name", target = "companyName")
     @Mapping(source = "company.licenses", target = "companyLicenses")
+    @Mapping(source = "company.rating", target = "companyRating")
     @Mapping(source = "name", target = "insuranceName")
     @Mapping(source = "description", target = "insuranceDescription")
     @Mapping(source = "validityPeriods", target = "insuranceValidityPeriods")

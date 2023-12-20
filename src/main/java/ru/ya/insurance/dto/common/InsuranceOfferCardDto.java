@@ -13,6 +13,7 @@ public class InsuranceOfferCardDto {
     private String companyLogo;
     private String companyName;
     private List<String> companyLicenses;
+    private Double companyRating;
     private String insuranceName;
     private String insuranceDescription;
     private List<Integer> insuranceValidityPeriods;
