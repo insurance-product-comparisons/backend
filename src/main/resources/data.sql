@@ -8,7 +8,7 @@ VALUES (1, 'licences/alpha-license.pdf'),
 
 INSERT INTO insurances (company_id, type, name, description, processing_time)
 VALUES (1, 'KASKO', 'КАСКО для Альфачей', 'КАСКО для Альфачей - это уверенность и переплата в 1000%', 1),
-       (2, 'OSAGO', 'Просто Осаго', 'Просто Осаго - и ничего лишнего. Просто плати и иди на*уй', 1);
+       (2, 'OSAGO', 'Просто Осаго', 'Просто Осаго - и ничего лишнего. Просто плати и иди', 1);
 
 INSERT INTO required_documents (insurance_id, document)
 VALUES (1, 'Заявление на получение страховки'),
