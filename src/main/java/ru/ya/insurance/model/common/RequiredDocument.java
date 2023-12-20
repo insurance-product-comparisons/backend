@@ -7,7 +7,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-// @EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "required_documents")
@@ -19,7 +19,9 @@ public class RequiredDocument {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_id")
     @JsonManagedReference
+    @EqualsAndHashCode.Include
     private Insurance insurance;
 
+    @EqualsAndHashCode.Include
     private String document;
 }

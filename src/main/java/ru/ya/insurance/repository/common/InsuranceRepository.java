@@ -12,6 +12,7 @@ public interface InsuranceRepository extends JpaRepository<Insurance, Long> {
     @Query("SELECT i " +
             "FROM Insurance i " +
             "JOIN FETCH i.company c " +
+            "JOIN FETCH c.licenses l" +
             "JOIN FETCH i.features f " +
             "JOIN FETCH i.validityPeriods vp " +
             "JOIN FETCH i.requiredDocuments rd " +

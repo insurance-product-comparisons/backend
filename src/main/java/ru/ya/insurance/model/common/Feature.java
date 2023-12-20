@@ -7,7 +7,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-// @EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "features")
@@ -19,9 +19,11 @@ public class Feature {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_id")
     @JsonManagedReference
+    @EqualsAndHashCode.Include
     private Insurance insurance;
 
     @Column(name = "feature_name")
+    @EqualsAndHashCode.Include
     private String name;
 
     @Column(name = "feature_description")

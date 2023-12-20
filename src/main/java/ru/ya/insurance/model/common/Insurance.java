@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-// @EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "insurances")
@@ -23,11 +23,14 @@ public class Insurance {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     @JsonManagedReference
+    @EqualsAndHashCode.Include
     private Company company;
 
     @Enumerated(EnumType.STRING)
+    @EqualsAndHashCode.Include
     private InsuranceType type;
 
+    @EqualsAndHashCode.Include
     private String name;
 
     private String description;
@@ -37,13 +40,16 @@ public class Insurance {
 
     @OneToMany(mappedBy = "insurance")
     @JsonBackReference
+    @EqualsAndHashCode.Exclude
     private Set<RequiredDocument> requiredDocuments;
 
     @OneToMany(mappedBy = "insurance")
     @JsonBackReference
+    @EqualsAndHashCode.Exclude
     private Set<Feature> features;
 
-    @OneToMany(mappedBy = "insurance")
+    @OneToMany(mappedBy = "insurance", fetch = FetchType.LAZY)
     @JsonBackReference
+    @EqualsAndHashCode.Exclude
     private Set<ValidityPeriod> validityPeriods;
 }

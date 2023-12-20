@@ -5,11 +5,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-// @EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "companies")
@@ -18,6 +19,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @EqualsAndHashCode.Include
     private String name;
 
     private String description;
@@ -28,9 +30,11 @@ public class Company {
 
     @OneToMany(mappedBy = "company")
     @JsonBackReference
+    @EqualsAndHashCode.Exclude
     private List<Insurance> insurances;
 
     @OneToMany(mappedBy = "company")
     @JsonBackReference
-    private List<License> licenses;
+    @EqualsAndHashCode.Exclude
+    private Set<License> licenses;
 }
