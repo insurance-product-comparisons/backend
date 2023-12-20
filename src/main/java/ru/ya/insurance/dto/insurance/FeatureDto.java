@@ -1,4 +1,4 @@
-package ru.ya.insurance.dto.common;
+package ru.ya.insurance.dto.insurance;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

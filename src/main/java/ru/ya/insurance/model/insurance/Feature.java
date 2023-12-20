@@ -1,8 +1,9 @@
-package ru.ya.insurance.model.common;
+package ru.ya.insurance.model.insurance;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import ru.ya.insurance.model.insurance.Insurance;
 
 @Entity
 @Getter
@@ -10,18 +11,22 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "licenses")
-public class License {
+@Table(name = "features")
+public class Feature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "insurance_id")
     @JsonManagedReference
     @EqualsAndHashCode.Include
-    private Company company;
+    private Insurance insurance;
 
+    @Column(name = "feature_name")
     @EqualsAndHashCode.Include
-    private String license;
+    private String name;
+
+    @Column(name = "feature_description")
+    private String description;
 }

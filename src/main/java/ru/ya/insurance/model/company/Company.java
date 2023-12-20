@@ -1,8 +1,9 @@
-package ru.ya.insurance.model.common;
+package ru.ya.insurance.model.company;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import ru.ya.insurance.model.insurance.Insurance;
 
 import java.util.List;
 import java.util.Set;

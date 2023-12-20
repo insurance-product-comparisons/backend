@@ -1,4 +1,4 @@
-package ru.ya.insurance.service.common.impl;
+package ru.ya.insurance.service.insurance.impl;
 
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ya.insurance.enums.InsuranceType;
-import ru.ya.insurance.model.common.*;
+import ru.ya.insurance.model.company.Company;
+import ru.ya.insurance.model.company.License;
+import ru.ya.insurance.model.insurance.Feature;
+import ru.ya.insurance.model.insurance.Insurance;
+import ru.ya.insurance.model.insurance.RequiredDocument;
+import ru.ya.insurance.model.insurance.ValidityPeriod;
 
 import static org.junit.Assert.*;
 
