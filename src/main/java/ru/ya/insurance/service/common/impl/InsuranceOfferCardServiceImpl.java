@@ -18,6 +18,8 @@ public class InsuranceOfferCardServiceImpl implements InsuranceOfferCardService 
     public Insurance findInsuranceOfferCardById(Long companyId, Long insuranceId) {
 
         return insuranceRepository.findByIdAndCompanyId(insuranceId, companyId)
-                .orElseThrow(() -> new NotFoundException(""));
+                .orElseThrow(() -> new NotFoundException(
+                        String.format("Not Found. insuranceId=%d, companyId=%d", insuranceId, companyId))
+                );
     }
 }
