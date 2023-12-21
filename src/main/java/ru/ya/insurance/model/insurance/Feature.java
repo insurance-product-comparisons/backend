@@ -7,7 +7,6 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "features")

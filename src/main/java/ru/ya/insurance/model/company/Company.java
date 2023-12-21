@@ -11,7 +11,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "companies")
