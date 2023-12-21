@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -20,9 +19,7 @@ public class RegionCoefficient {
 
     private String name;
 
-    @Column(name = "coefficient_exclude")
     private BigDecimal coefficientExclude;
 
-    @Column(name = "coefficient_include")
     private BigDecimal coefficientInclude;
 }

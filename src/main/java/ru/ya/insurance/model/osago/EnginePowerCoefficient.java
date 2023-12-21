@@ -6,10 +6,8 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 @Table(name = "engine_power_coefficient")
 public class EnginePowerCoefficient {
@@ -21,6 +19,5 @@ public class EnginePowerCoefficient {
     @Column(name = "engine_power")
     private String power;
 
-    @Column(name = "coefficient")
     private Double coefficient;
 }

@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,10 +20,8 @@ public class AgeExperienceCoefficient {
     private Long ageId;
 
     @Id
-    @Column(name = "experience_id")
     private Long experienceId;
 
-    @Column(name = "coefficient")
     private BigDecimal coefficient;
 
 }

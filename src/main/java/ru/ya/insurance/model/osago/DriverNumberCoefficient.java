@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,6 +21,5 @@ public class DriverNumberCoefficient {
     @Column(name = "driver_number")
     private String name;
 
-    @Column(name = "coefficient")
     private BigDecimal coefficient;
 }

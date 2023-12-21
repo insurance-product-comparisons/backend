@@ -3,15 +3,13 @@ package ru.ya.insurance.controller.osago;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
 import ru.ya.insurance.dto.osago.NewInsuranceRequestDto;
 import ru.ya.insurance.mapper.osago.*;
+import ru.ya.insurance.model.osago.NewInsuranceRequest;
 import ru.ya.insurance.service.osago.*;
-import ru.ya.insurance.service.osago.impl.KbmCoefficientServiceImpl;
-import ru.ya.insurance.service.osago.impl.NewInsuranceRequestServiceImpl;
 
 
 @Validated
@@ -35,12 +33,13 @@ public class OsagoController {
     private final EnginePowerCoefficientService enginePowerCoefficientService;
     private final EnginePowerMapper enginePowerMapper;
 
-    private final KbmCoefficientServiceImpl kbmServiceImpl;
+    private final KbmCoefficientService kbmCoefficientService;
     private final KbmMapper kbmMapper;
 
-    private final NewInsuranceRequestServiceImpl newInsuranceRequestService;
+    private final NewInsuranceRequestService newInsuranceRequestService;
 
     private final RegionCoefficientService regionCoefficientService;
+    private final RegionMapper regionMapper;
 
     @GetMapping("/filter-init")
     public FormFilterInitDto getFilterInitDto() {
@@ -61,18 +60,17 @@ public class OsagoController {
         formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(
                 enginePowerCoefficientService.getEnginePowerList()));
 
-        formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmServiceImpl.getKbmDtoList()));
+        formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmCoefficientService.getKbmDtoList()));
 
-        formFilterInitDto.setRegionCoefficientList(regionCoefficientService.findAll());
+        formFilterInitDto.setRegionCoefficientList(regionMapper.toDtoList(regionCoefficientService.findAll()));
 
         return formFilterInitDto;
     }
 
     @PostMapping("/new-insurance-request")
-    public ResponseEntity<NewInsuranceRequestDto> addNewInsuranceRequest(
-            @Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto));
+    @ResponseStatus(HttpStatus.CREATED)
+    public NewInsuranceRequest addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
+        return newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto);
     }
 
 }
