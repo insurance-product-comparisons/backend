@@ -11,7 +11,6 @@ import ru.ya.insurance.mapper.osago.*;
 import ru.ya.insurance.model.osago.NewInsuranceRequest;
 import ru.ya.insurance.service.osago.*;
 
-
 @Validated
 @RestController
 @RequiredArgsConstructor
