@@ -12,7 +12,6 @@ import ru.ya.insurance.service.consultation.ConsultationService;
 
 @Validated
 @RestController
-@Slf4j
 @AllArgsConstructor
 @RequestMapping("/consultation-request")
 public class ConsultationController {
