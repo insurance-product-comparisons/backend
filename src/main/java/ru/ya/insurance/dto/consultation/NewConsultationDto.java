@@ -8,12 +8,12 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class NewConsultationDto {
-    @Pattern(regexp = "^[а-яА-Яa-zA-Zs]+",
-        message = "Имя может содержать только буквы и пробел, от 3 до 20 символов")
+    @Pattern(regexp = "^[а-яА-Яa-zA-Z]+",
+        message = "Имя может содержать только буквы, от 3 до 20 символов")
     @Size(min = 3, max = 20)
     String firstName;
 
-    @Pattern(regexp = "^[а-яА-Яa-zA-Zs]+",
+    @Pattern(regexp = "^[а-яА-Яa-zA-Z ]+",
         message = "Фамилия может содержать только буквы и пробел, от 3 до 30 символов")
     @Size(min = 3, max = 30)
     String lastName;
