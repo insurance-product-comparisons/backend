@@ -23,8 +23,8 @@ public class NewConsultationDto {
     @Size(min = 3, max = 30)
     String lastName;
 
-    @Pattern(regexp = "^[0-9]11",
-        message = "Телефонный номер может содержать только цифры, длина фиксирована: 11 символов")
+    @Pattern(regexp = "^\\+7[0-9]{10}$",
+        message = "Номер телефона должен начинаться с +7 и быть 12 символов в длину")
     @NotBlank(message = "Телефонный номер не может быть пустым")
     String phoneNumber;
 

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "request_for_consultation", schema = "public")
+@Table(name = "request_for_consultation")
 @Getter
 @Setter
 @Builder

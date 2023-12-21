@@ -1,5 +1,6 @@
 package ru.ya.insurance.service.consultation;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,10 +11,10 @@ import ru.ya.insurance.model.consultation.ConsultationRequest;
 import ru.ya.insurance.repository.consultation.ConsultationRequestRepository;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ConsultationServiceImpl implements ConsultationService {
-    ConsultationRequestRepository consultationRequestRepository;
-    ConsultationRequestMapper consultationRequestMapper;
+    private final ConsultationRequestRepository consultationRequestRepository;
+    private final ConsultationRequestMapper consultationRequestMapper;
 
     @Override
     @Transactional

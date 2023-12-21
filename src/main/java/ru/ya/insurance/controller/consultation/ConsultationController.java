@@ -16,7 +16,7 @@ import ru.ya.insurance.service.consultation.ConsultationService;
 @AllArgsConstructor
 @RequestMapping("/consultation-request")
 public class ConsultationController {
-    ConsultationService consultationService;
+    private final ConsultationService consultationService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
