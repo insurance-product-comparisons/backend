@@ -6,24 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name = "region_coefficient")
+@Table(name = "region")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegionCoefficient {
+public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @Column(name = "coefficient_exclude")
-    private BigDecimal coefficientExclude;
-
-    @Column(name = "coefficient_include")
-    private BigDecimal coefficientInclude;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "region_id")
+    private List<RegionCoefficient> regionCoefficientList;
 }

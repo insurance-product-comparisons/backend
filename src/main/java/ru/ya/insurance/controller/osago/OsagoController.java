@@ -5,18 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
-import ru.ya.insurance.mapper.osago.AgeMapper;
-import ru.ya.insurance.mapper.osago.BaseRateMapper;
-import ru.ya.insurance.mapper.osago.DriverNumberMapper;
-import ru.ya.insurance.mapper.osago.DrivingExperienceMapper;
-import ru.ya.insurance.mapper.osago.EnginePowerMapper;
-import ru.ya.insurance.mapper.osago.KbmMapper;
-import ru.ya.insurance.service.osago.AgeService;
-import ru.ya.insurance.service.osago.BaseRateCoefficientService;
-import ru.ya.insurance.service.osago.DriverNumberCoefficientService;
-import ru.ya.insurance.service.osago.DrivingExperienceService;
-import ru.ya.insurance.service.osago.EnginePowerCoefficientService;
-import ru.ya.insurance.service.osago.RegionCoefficientService;
+import ru.ya.insurance.mapper.osago.*;
+import ru.ya.insurance.service.osago.*;
 import ru.ya.insurance.service.osago.impl.KbmCoefficientServiceImpl;
 
 @RestController
@@ -44,8 +34,7 @@ public class OsagoController {
 
     private final RegionCoefficientService regionCoefficientService;
 
-    @GetMapping
-    @RequestMapping("/filter-init")
+    @GetMapping("/filter-init")
     public FormFilterInitDto getFilterInitDto() {
 
         FormFilterInitDto formFilterInitDto = new FormFilterInitDto();

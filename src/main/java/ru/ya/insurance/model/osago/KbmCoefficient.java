@@ -23,7 +23,6 @@ public class KbmCoefficient {
     @Column(name = "kbm")
     private String kbmClass;
 
-    @Column(name = "coefficient")
-    private BigDecimal kbmCoefficient;
+    private BigDecimal coefficient;
 
 }

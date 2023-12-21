@@ -12,5 +12,5 @@ import java.util.List;
 public class RegionDto {
     private Long id;
     private String name;
-    private List<SubRegionDto> subRegionList;
+    private List<RegionCoefficientDto> regionCoefficientList;
 }
