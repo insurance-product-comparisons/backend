@@ -6,23 +6,27 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "kmb_coefficient")
-public class KbmCoefficient {
+@Table(name = "new_insurance_request")
+public class NewInsuranceRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "kbm")
-    private String kbmClass;
+    private String fullName;
 
-    private BigDecimal coefficient;
+    private String phoneNumber;
+
+    private String email;
+
+    private String situation;
+
+    @Column(name = "as_a_gift", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean insuranceAsAGift;
 
 }
