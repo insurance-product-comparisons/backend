@@ -14,7 +14,8 @@ import ru.ya.insurance.model.insurance.Insurance;
 import ru.ya.insurance.model.insurance.RequiredDocument;
 import ru.ya.insurance.model.insurance.ValidityPeriod;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @Transactional
 @SpringBootTest(
