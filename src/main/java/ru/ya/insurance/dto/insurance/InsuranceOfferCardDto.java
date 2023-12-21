@@ -3,7 +3,6 @@ package ru.ya.insurance.dto.insurance;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import ru.ya.insurance.dto.insurance.FeatureDto;
 
 import java.util.List;
 

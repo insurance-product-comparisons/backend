@@ -2,27 +2,26 @@ package ru.ya.insurance.model.osago;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
+@Table(name = "region")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Table(name = "kmb_coefficient")
-public class KbmCoefficient {
-
+public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "kbm")
-    private String kbmClass;
+    private String name;
 
-    private BigDecimal coefficient;
-
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "region_id")
+    private List<RegionCoefficient> regionCoefficientList;
 }

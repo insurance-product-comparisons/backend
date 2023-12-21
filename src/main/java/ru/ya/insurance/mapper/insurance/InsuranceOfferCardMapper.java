@@ -34,9 +34,9 @@ public interface InsuranceOfferCardMapper {
      * где String - это поле из RequiredDocument - String document.
      * <p>
      * Пишем такой метод, и все работает.
-     *     default String mapRequiredDocument(RequiredDocument requiredDocument) {
-     *         return requiredDocument.getDocument();
-     *     }
+     * default String mapRequiredDocument(RequiredDocument requiredDocument) {
+     * return requiredDocument.getDocument();
+     * }
      */
 
     default String mapLicence(License license) {

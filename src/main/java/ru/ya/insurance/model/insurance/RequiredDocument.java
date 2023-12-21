@@ -3,7 +3,6 @@ package ru.ya.insurance.model.insurance;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
-import ru.ya.insurance.model.insurance.Insurance;
 
 @Entity
 @Getter
