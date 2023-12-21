@@ -18,13 +18,6 @@ public class RegionCoefficient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "year")
-    private String year;
-
-    @Column(name = "number")
-    private String number;
-
-    @Column(name = "region")
     private String name;
 
     @Column(name = "coefficient_exclude")
