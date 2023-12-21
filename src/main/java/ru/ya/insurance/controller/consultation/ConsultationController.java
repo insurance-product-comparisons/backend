@@ -1,23 +1,27 @@
 package ru.ya.insurance.controller.consultation;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.ya.insurance.dto.consultation.NewConsultationDto;
 import ru.ya.insurance.dto.consultation.RequestConsultationDto;
+import ru.ya.insurance.service.consultation.ConsultationService;
 
 @Validated
 @RestController
 @Slf4j
 @AllArgsConstructor
+@RequestMapping("/consultation-request")
 public class ConsultationController {
+    ConsultationService consultationService;
 
-    public RequestConsultationDto postRequest() {
-        return null;
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public RequestConsultationDto addNewConsultationRequest(
+        @Valid @RequestBody NewConsultationDto newConsultationDto) {
+        return consultationService.save(newConsultationDto);
     }
-//Нужно создать эндпоинт POST: consultation-request, на котором будет происходить валидация
-//ввода пользователя и будет выбрасываться один из статусов:
-//- Status code: 201 Created - успех
-//- Status code: 400 Bad Request - некорректные данные
-
 }

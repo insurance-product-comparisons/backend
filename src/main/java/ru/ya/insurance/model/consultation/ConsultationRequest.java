@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RequestConsultation {
+public class ConsultationRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
