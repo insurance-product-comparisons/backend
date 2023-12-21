@@ -7,7 +7,6 @@ import lombok.*;
 @Table(name = "request_for_consultation")
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConsultationRequest {
