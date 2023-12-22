@@ -1,7 +1,6 @@
 package ru.ya.insurance.service.consultation;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ya.insurance.dto.consultation.NewConsultationDto;
@@ -21,9 +20,9 @@ public class ConsultationServiceImpl implements ConsultationService {
     public RequestConsultationDto save(NewConsultationDto newConsultationDto) {
 
         ConsultationRequest consultationRequest = consultationRequestMapper
-            .newConsultationDtoToConsultationRequest(newConsultationDto);
+                .newConsultationDtoToConsultationRequest(newConsultationDto);
         return consultationRequestMapper
-            .consultationRequestToRequestConsultationDto(consultationRequestRepository
-                .save(consultationRequest));
+                .consultationRequestToRequestConsultationDto(consultationRequestRepository
+                        .save(consultationRequest));
     }
 }

@@ -1,24 +1,17 @@
 package ru.ya.insurance.controller.osago;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
-import ru.ya.insurance.mapper.osago.AgeMapper;
-import ru.ya.insurance.mapper.osago.BaseRateMapper;
-import ru.ya.insurance.mapper.osago.DriverNumberMapper;
-import ru.ya.insurance.mapper.osago.DrivingExperienceMapper;
-import ru.ya.insurance.mapper.osago.EnginePowerMapper;
-import ru.ya.insurance.mapper.osago.KbmMapper;
-import ru.ya.insurance.service.osago.AgeService;
-import ru.ya.insurance.service.osago.BaseRateCoefficientService;
-import ru.ya.insurance.service.osago.DriverNumberCoefficientService;
-import ru.ya.insurance.service.osago.DrivingExperienceService;
-import ru.ya.insurance.service.osago.EnginePowerCoefficientService;
-import ru.ya.insurance.service.osago.RegionCoefficientService;
-import ru.ya.insurance.service.osago.impl.KbmCoefficientServiceImpl;
+import ru.ya.insurance.dto.osago.NewInsuranceRequestDto;
+import ru.ya.insurance.mapper.osago.*;
+import ru.ya.insurance.model.osago.NewInsuranceRequest;
+import ru.ya.insurance.service.osago.*;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/osago")
@@ -39,31 +32,44 @@ public class OsagoController {
     private final EnginePowerCoefficientService enginePowerCoefficientService;
     private final EnginePowerMapper enginePowerMapper;
 
-    private final KbmCoefficientServiceImpl kbmServiceImpl;
+    private final KbmCoefficientService kbmCoefficientService;
     private final KbmMapper kbmMapper;
 
-    private final RegionCoefficientService regionCoefficientService;
+    private final NewInsuranceRequestService newInsuranceRequestService;
 
-    @GetMapping
-    @RequestMapping("/filter-init")
+    private final RegionCoefficientService regionCoefficientService;
+    private final RegionMapper regionMapper;
+
+    @GetMapping("/filter-init")
     public FormFilterInitDto getFilterInitDto() {
 
         FormFilterInitDto formFilterInitDto = new FormFilterInitDto();
 
         formFilterInitDto.setAgeList(ageMapper.ageListToAgeDtoList(ageService.getAgeList()));
 
-        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(drivingExperienceService.getDrivingExperienceList()));
+        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(
+                drivingExperienceService.getDrivingExperienceList()));
 
-        formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(baseRateCoefficientService.getBaseRateList()));
+        formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(
+                baseRateCoefficientService.getBaseRateList()));
 
-        formFilterInitDto.setDriverNumberCoefficientList(driverNumberMapper.driverNumberListToDriverNumberDtoList(driverNumberCoefficientService.getAllDriverNumberCoefficient()));
+        formFilterInitDto.setDriverNumberCoefficientList(driverNumberMapper.driverNumberListToDriverNumberDtoList(
+                driverNumberCoefficientService.getAllDriverNumberCoefficient()));
 
-        formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(enginePowerCoefficientService.getEnginePowerList()));
+        formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(
+                enginePowerCoefficientService.getEnginePowerList()));
 
-        formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmServiceImpl.getKbmDtoList()));
+        formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmCoefficientService.getKbmDtoList()));
 
-        formFilterInitDto.setRegionCoefficientList(regionCoefficientService.findAll());
+        formFilterInitDto.setRegionCoefficientList(regionMapper.toDtoList(regionCoefficientService.findAll()));
 
         return formFilterInitDto;
     }
+
+    @PostMapping("/new-insurance-request")
+    @ResponseStatus(HttpStatus.CREATED)
+    public NewInsuranceRequest addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
+        return newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto);
+    }
+
 }

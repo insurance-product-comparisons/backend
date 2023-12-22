@@ -2,17 +2,17 @@ package ru.ya.insurance.model.osago;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "kmb_coefficient")
 public class KbmCoefficient {
 
@@ -23,7 +23,6 @@ public class KbmCoefficient {
     @Column(name = "kbm")
     private String kbmClass;
 
-    @Column(name = "coefficient")
-    private BigDecimal kbmCoefficient;
+    private BigDecimal coefficient;
 
 }
