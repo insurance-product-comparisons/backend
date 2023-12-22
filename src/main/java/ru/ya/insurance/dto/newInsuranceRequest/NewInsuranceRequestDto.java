@@ -1,4 +1,4 @@
-package ru.ya.insurance.dto.osago;
+package ru.ya.insurance.dto.newInsuranceRequest;
 
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
