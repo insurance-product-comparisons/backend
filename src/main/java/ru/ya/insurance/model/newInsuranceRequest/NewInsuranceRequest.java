@@ -1,4 +1,4 @@
-package ru.ya.insurance.model.osago;
+package ru.ya.insurance.model.newInsuranceRequest;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,17 +1,13 @@
 package ru.ya.insurance.controller.osago;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
-import ru.ya.insurance.dto.osago.NewInsuranceRequestDto;
 import ru.ya.insurance.mapper.osago.*;
-import ru.ya.insurance.model.osago.NewInsuranceRequest;
 import ru.ya.insurance.service.osago.*;
 
-@Validated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/osago")
@@ -34,8 +30,6 @@ public class OsagoController {
 
     private final KbmCoefficientService kbmCoefficientService;
     private final KbmMapper kbmMapper;
-
-    private final NewInsuranceRequestService newInsuranceRequestService;
 
     private final RegionCoefficientService regionCoefficientService;
     private final RegionMapper regionMapper;
@@ -64,12 +58,6 @@ public class OsagoController {
         formFilterInitDto.setRegionCoefficientList(regionMapper.toDtoList(regionCoefficientService.findAll()));
 
         return formFilterInitDto;
-    }
-
-    @PostMapping("/new-insurance-request")
-    @ResponseStatus(HttpStatus.CREATED)
-    public NewInsuranceRequest addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
-        return newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto);
     }
 
 }
