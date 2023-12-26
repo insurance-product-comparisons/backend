@@ -2,13 +2,16 @@ INSERT INTO companies (name, description, rating, logo)
 VALUES ('Альфа', 'Альфа страхование - это уверенность', 5.0, 'logo/alpha.png'),
        ('Бета', 'Бета страхование - это тревожность', 3.9, 'logo/beta.png');
 
+
 INSERT INTO licenses (company_id, license)
 VALUES (1, 'licences/alpha-license.pdf'),
        (2, 'licenses/beta-license.pdf');
 
+
 INSERT INTO insurances (company_id, type, name, description, processing_time)
 VALUES (1, 'KASKO', 'КАСКО для Альфачей', 'КАСКО для Альфачей - это уверенность и переплата в 1000%', 1),
        (2, 'OSAGO', 'Просто Осаго', 'Просто Осаго - и ничего лишнего. Просто плати и иди', 1);
+
 
 INSERT INTO required_documents (insurance_id, document)
 VALUES (1, 'Заявление на получение страховки'),
@@ -25,6 +28,7 @@ VALUES (1, 'Заявление на получение страховки'),
        (2, 'Водительские удостоверения или их копии для всех лиц, допущенных к управлению ТС'),
        (2, 'Диагностическая карта машины');
 
+
 INSERT INTO features (insurance_id, feature_name, feature_description)
 VALUES (1, 'Ущерб от ДТП',
         'Полис КАСКО покрывает ущерб, который может произойти в результате дорожно-транспортного происшествия, включая случаи, когда владелец автомобиля является виновником ДТП'),
@@ -40,18 +44,19 @@ VALUES (1, 'Ущерб от ДТП',
        (2, 'Ущерб, причиненный имуществу третьих лиц',
         'Если в результате ДТП было повреждено имущество других людей (например, автомобиль или забор), страховая компания возмещает расходы на его восстановление');
 
+
 INSERT INTO validity_periods (insurance_id, validity_period)
 VALUES (1, 30),
        (1, 90),
        (1, 365),
        (2, 365);
 
-----
 
 INSERT INTO driver_number_coefficient (driver_number, coefficient)
 VALUES ('1 и более', 1.0),
        ('Без ограничений для физических лиц', 2.32),
        ('Без ограничений для юридических лиц', 1.97);
+
 
 INSERT INTO age (age)
 VALUES ('16-21'),
@@ -63,6 +68,7 @@ VALUES ('16-21'),
        ('50-59'),
        ('60+');
 
+
 INSERT INTO driving_experience (driving_experience)
 VALUES ('0'),
        ('1'),
@@ -72,6 +78,7 @@ VALUES ('0'),
        ('7-9'),
        ('10-14'),
        ('15+');
+
 
 INSERT INTO age_experience_coefficient (age_id, experience_id, coefficient)
 VALUES (1, 1, 2.27),
@@ -151,6 +158,17 @@ VALUES ('Класс M', 3.92),
        ('Класс 11', 0.57),
        ('Класс 12', 0.52),
        ('Класс 13', 0.46);
+
+
+INSERT INTO season_coefficient (usage_period, coefficient)
+VALUES ('3', 0.5),
+       ('4', 0.6),
+       ('5', 0.65),
+       ('6', 0.7),
+       ('7', 0.8),
+       ('8', 0.9),
+       ('9', 0.95),
+       ('10-12', 1);
 
 
 INSERT INTO engine_power_coefficient (engine_power, coefficient)
