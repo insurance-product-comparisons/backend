@@ -34,6 +34,9 @@ public class OsagoController {
     private final RegionCoefficientService regionCoefficientService;
     private final RegionMapper regionMapper;
 
+    private final SeasonCoefficientService seasonCoefficientService;
+    private final SeasonCoefficientMapper seasonCoefficientMapper;
+
     @GetMapping("/filter-init")
     public FormFilterInitDto getFilterInitDto() {
 
@@ -56,6 +59,9 @@ public class OsagoController {
         formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmCoefficientService.getKbmDtoList()));
 
         formFilterInitDto.setRegionCoefficientList(regionMapper.toDtoList(regionCoefficientService.findAll()));
+
+        formFilterInitDto.setSeasonCoefficientDtoList(seasonCoefficientMapper.seasonCoefficientListToKbmDtoList(
+                seasonCoefficientService.getSeasonCoefficientDtoList()));
 
         return formFilterInitDto;
     }

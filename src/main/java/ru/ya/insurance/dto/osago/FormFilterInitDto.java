@@ -19,4 +19,5 @@ public class FormFilterInitDto {
     private List<DriverNumberDto> driverNumberCoefficientList;
     private List<KbmDto> kbmList;
     private List<RegionDto> regionCoefficientList;
+    private List<SeasonCoefficientDto> seasonCoefficientDtoList;
 }
