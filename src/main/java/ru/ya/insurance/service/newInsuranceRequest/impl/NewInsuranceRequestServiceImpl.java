@@ -1,4 +1,4 @@
-package ru.ya.insurance.service.osago.impl;
+package ru.ya.insurance.service.newInsuranceRequest.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,6 @@ import ru.ya.insurance.model.newInsuranceRequest.NewInsuranceRequest;
 import ru.ya.insurance.repository.newInsuranceRequest.NewInsuranceRequestRepository;
 import ru.ya.insurance.service.newInsuranceRequest.NewInsuranceRequestService;
 
-@Transactional(readOnly = true)
 @Service
 @RequiredArgsConstructor
 public class NewInsuranceRequestServiceImpl implements NewInsuranceRequestService {
@@ -20,9 +19,8 @@ public class NewInsuranceRequestServiceImpl implements NewInsuranceRequestServic
     @Override
     @Transactional
     public NewInsuranceRequest addNewInsuranceRequest(NewInsuranceRequestDto newInsuranceRequestDto) {
-        NewInsuranceRequest newInsuranceRequest =
-                newInsuranceRequestMapper.newInsuranceRequestDtoToNewInsuranceRequest(newInsuranceRequestDto);
-        return newInsuranceRequestRepository.save(newInsuranceRequest);
+        return newInsuranceRequestRepository.save(
+                newInsuranceRequestMapper.newInsuranceRequestDtoToNewInsuranceRequest(newInsuranceRequestDto));
     }
 
 }
