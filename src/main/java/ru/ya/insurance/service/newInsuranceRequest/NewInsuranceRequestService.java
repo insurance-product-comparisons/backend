@@ -5,6 +5,6 @@ import ru.ya.insurance.model.newInsuranceRequest.NewInsuranceRequest;
 
 public interface NewInsuranceRequestService {
 
-    NewInsuranceRequest addNewInsuranceRequest(NewInsuranceRequestDto newInsuranceRequestDto);
+    NewInsuranceRequestDto addNewInsuranceRequest(NewInsuranceRequest newInsuranceRequest);
 
 }

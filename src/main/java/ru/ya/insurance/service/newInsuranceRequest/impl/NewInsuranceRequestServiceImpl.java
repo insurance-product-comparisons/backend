@@ -18,9 +18,9 @@ public class NewInsuranceRequestServiceImpl implements NewInsuranceRequestServic
 
     @Override
     @Transactional
-    public NewInsuranceRequest addNewInsuranceRequest(NewInsuranceRequestDto newInsuranceRequestDto) {
-        return newInsuranceRequestRepository.save(
-                newInsuranceRequestMapper.newInsuranceRequestDtoToNewInsuranceRequest(newInsuranceRequestDto));
+    public NewInsuranceRequestDto addNewInsuranceRequest(NewInsuranceRequest newInsuranceRequest) {
+        return newInsuranceRequestMapper.newInsuranceRequestToNewInsuranceRequestDto(
+                newInsuranceRequestRepository.save(newInsuranceRequest));
     }
 
 }

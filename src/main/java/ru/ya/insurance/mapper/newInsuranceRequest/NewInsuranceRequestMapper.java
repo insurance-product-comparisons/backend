@@ -7,6 +7,6 @@ import ru.ya.insurance.model.newInsuranceRequest.NewInsuranceRequest;
 @Mapper
 public interface NewInsuranceRequestMapper {
 
-    NewInsuranceRequest newInsuranceRequestDtoToNewInsuranceRequest(NewInsuranceRequestDto newInsuranceRequestDto);
+    NewInsuranceRequestDto newInsuranceRequestToNewInsuranceRequestDto(NewInsuranceRequest newInsuranceRequest);
 
 }

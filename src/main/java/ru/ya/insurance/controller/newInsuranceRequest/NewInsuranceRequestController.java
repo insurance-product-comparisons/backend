@@ -19,8 +19,8 @@ public class NewInsuranceRequestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public NewInsuranceRequest addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequestDto newInsuranceRequestDto) {
-        return newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequestDto);
+    public NewInsuranceRequestDto addNewInsuranceRequest(@Valid @RequestBody NewInsuranceRequest newInsuranceRequest) {
+        return newInsuranceRequestService.addNewInsuranceRequest(newInsuranceRequest);
     }
 
 }
