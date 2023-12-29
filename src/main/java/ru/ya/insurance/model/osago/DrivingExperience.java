@@ -6,9 +6,9 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "driving_experience")
 public class DrivingExperience {
 

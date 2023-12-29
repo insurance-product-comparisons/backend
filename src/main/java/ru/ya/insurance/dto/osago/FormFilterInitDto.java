@@ -1,6 +1,9 @@
 package ru.ya.insurance.dto.osago;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -16,4 +19,5 @@ public class FormFilterInitDto {
     private List<DriverNumberDto> driverNumberCoefficientList;
     private List<KbmDto> kbmList;
     private List<RegionDto> regionCoefficientList;
+    private List<SeasonCoefficientDto> seasonCoefficientDtoList;
 }

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
-public class SubRegionDto {
+public class RegionCoefficientDto {
     private Long id;
     private String name;
     private BigDecimal coefficientExclude;

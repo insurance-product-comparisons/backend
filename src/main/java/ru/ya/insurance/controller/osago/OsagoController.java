@@ -5,19 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
-import ru.ya.insurance.mapper.osago.AgeMapper;
-import ru.ya.insurance.mapper.osago.BaseRateMapper;
-import ru.ya.insurance.mapper.osago.DriverNumberMapper;
-import ru.ya.insurance.mapper.osago.DrivingExperienceMapper;
-import ru.ya.insurance.mapper.osago.EnginePowerMapper;
-import ru.ya.insurance.mapper.osago.KbmMapper;
-import ru.ya.insurance.service.osago.AgeService;
-import ru.ya.insurance.service.osago.BaseRateCoefficientService;
-import ru.ya.insurance.service.osago.DriverNumberCoefficientService;
-import ru.ya.insurance.service.osago.DrivingExperienceService;
-import ru.ya.insurance.service.osago.EnginePowerCoefficientService;
-import ru.ya.insurance.service.osago.RegionCoefficientService;
-import ru.ya.insurance.service.osago.impl.KbmCoefficientServiceImpl;
+import ru.ya.insurance.mapper.osago.*;
+import ru.ya.insurance.service.osago.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -39,31 +28,42 @@ public class OsagoController {
     private final EnginePowerCoefficientService enginePowerCoefficientService;
     private final EnginePowerMapper enginePowerMapper;
 
-    private final KbmCoefficientServiceImpl kbmServiceImpl;
+    private final KbmCoefficientService kbmCoefficientService;
     private final KbmMapper kbmMapper;
 
     private final RegionCoefficientService regionCoefficientService;
+    private final RegionMapper regionMapper;
 
-    @GetMapping
-    @RequestMapping("/filter-init")
+    private final SeasonCoefficientService seasonCoefficientService;
+    private final SeasonCoefficientMapper seasonCoefficientMapper;
+
+    @GetMapping("/filter-init")
     public FormFilterInitDto getFilterInitDto() {
 
         FormFilterInitDto formFilterInitDto = new FormFilterInitDto();
 
         formFilterInitDto.setAgeList(ageMapper.ageListToAgeDtoList(ageService.getAgeList()));
 
-        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(drivingExperienceService.getDrivingExperienceList()));
+        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(
+                drivingExperienceService.getDrivingExperienceList()));
 
-        formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(baseRateCoefficientService.getBaseRateList()));
+        formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(
+                baseRateCoefficientService.getBaseRateList()));
 
-        formFilterInitDto.setDriverNumberCoefficientList(driverNumberMapper.driverNumberListToDriverNumberDtoList(driverNumberCoefficientService.getAllDriverNumberCoefficient()));
+        formFilterInitDto.setDriverNumberCoefficientList(driverNumberMapper.driverNumberListToDriverNumberDtoList(
+                driverNumberCoefficientService.getAllDriverNumberCoefficient()));
 
-        formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(enginePowerCoefficientService.getEnginePowerList()));
+        formFilterInitDto.setEnginePowerList(enginePowerMapper.enginePowerCoefficientListToEnginePowerDtoList(
+                enginePowerCoefficientService.getEnginePowerList()));
 
-        formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmServiceImpl.getKbmDtoList()));
+        formFilterInitDto.setKbmList(kbmMapper.kbmCoefficientListToKbmDtoList(kbmCoefficientService.getKbmDtoList()));
 
-        formFilterInitDto.setRegionCoefficientList(regionCoefficientService.findAll());
+        formFilterInitDto.setRegionCoefficientList(regionMapper.toDtoList(regionCoefficientService.findAll()));
+
+        formFilterInitDto.setSeasonCoefficientDtoList(seasonCoefficientMapper.seasonCoefficientListToKbmDtoList(
+                seasonCoefficientService.getSeasonCoefficientDtoList()));
 
         return formFilterInitDto;
     }
+
 }

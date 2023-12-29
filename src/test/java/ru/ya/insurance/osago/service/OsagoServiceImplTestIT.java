@@ -10,7 +10,7 @@ import ru.ya.insurance.service.osago.impl.BaseRateCoefficientServiceImpl;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @SpringBootTest(

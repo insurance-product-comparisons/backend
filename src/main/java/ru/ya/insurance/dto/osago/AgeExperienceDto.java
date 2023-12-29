@@ -1,6 +1,8 @@
 package ru.ya.insurance.dto.osago;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 

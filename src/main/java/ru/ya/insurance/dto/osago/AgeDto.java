@@ -1,6 +1,8 @@
 package ru.ya.insurance.dto.osago;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
