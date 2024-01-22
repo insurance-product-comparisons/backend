@@ -13,11 +13,8 @@ import ru.ya.insurance.service.osago.*;
 @RequestMapping("/osago")
 public class OsagoController {
 
-    private final AgeService ageService;
-    private final AgeMapper ageMapper;
-
-    private final DrivingExperienceService drivingExperienceService;
-    private final DrivingExperienceMapper drivingExperienceMapper;
+    private final AgeDrivingExperienceCoefficientService ageDrivingExperienceCoefficientService;
+    private final AgeDrivingExperienceCoefficientMapper ageDrivingExperienceCoefficientMapper;
 
     private final BaseRateCoefficientService baseRateCoefficientService;
     private final BaseRateMapper baseRateMapper;
@@ -42,10 +39,9 @@ public class OsagoController {
 
         FormFilterInitDto formFilterInitDto = new FormFilterInitDto();
 
-        formFilterInitDto.setAgeList(ageMapper.ageListToAgeDtoList(ageService.getAgeList()));
-
-        formFilterInitDto.setDrivingExperienceList(drivingExperienceMapper.drivingExperienceListToDrivingExperienceDtoList(
-                drivingExperienceService.getDrivingExperienceList()));
+        formFilterInitDto.setAgeDrivingExperienceCoefficientList(
+                ageDrivingExperienceCoefficientMapper.AgeDrivingExperienceCoefficientListToAgeDrivingExperienceCoefficientDtoList(
+                        ageDrivingExperienceCoefficientService.getAgeDrivingExperienceCoefficientList()));
 
         formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(
                 baseRateCoefficientService.getBaseRateList()));

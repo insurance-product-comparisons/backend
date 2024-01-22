@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import ru.ya.insurance.model.insurance.Insurance;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -14,8 +15,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "companies")
+@Table(name = "insurance_companies")
 public class Company {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,4 +40,7 @@ public class Company {
     @JsonBackReference
     @EqualsAndHashCode.Exclude
     private Set<License> licenses;
+
+    private BigDecimal coefficient;
+
 }

@@ -15,13 +15,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Region {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String region;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "region_id")
     private List<RegionCoefficient> regionCoefficientList;
+
 }

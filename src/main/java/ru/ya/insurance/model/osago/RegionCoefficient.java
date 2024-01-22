@@ -13,13 +13,15 @@ import java.math.BigDecimal;
 @Builder
 @Table(name = "region_coefficient")
 public class RegionCoefficient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String region;
 
-    private BigDecimal coefficientExclude;
+    private BigDecimal vehicleCoefficient;
 
-    private BigDecimal coefficientInclude;
+    private BigDecimal specialVehicleCoefficient;
+
 }
