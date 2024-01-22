@@ -9,10 +9,10 @@ import java.util.List;
 @Mapper
 public interface AgeDrivingExperienceCoefficientMapper {
 
-    AgeDrivingExperienceCoefficientDto AgeDrivingExperienceCoefficientToAgeDrivingExperienceCoefficientDto(
+    AgeDrivingExperienceCoefficientDto ageDrivingExperienceCoefficientToAgeDrivingExperienceCoefficientDto(
             AgeDrivingExperienceCoefficient ageDrivingExperienceCoefficient);
 
-    List<AgeDrivingExperienceCoefficientDto> AgeDrivingExperienceCoefficientListToAgeDrivingExperienceCoefficientDtoList(
+    List<AgeDrivingExperienceCoefficientDto> ageDrivingExperienceCoefficientListToAgeDrivingExperienceCoefficientDtoList(
             List<AgeDrivingExperienceCoefficient> ageDrivingExperienceCoefficientList);
 
 }
