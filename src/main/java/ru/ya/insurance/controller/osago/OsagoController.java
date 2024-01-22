@@ -40,7 +40,7 @@ public class OsagoController {
         FormFilterInitDto formFilterInitDto = new FormFilterInitDto();
 
         formFilterInitDto.setAgeDrivingExperienceCoefficientList(
-                ageDrivingExperienceCoefficientMapper.AgeDrivingExperienceCoefficientListToAgeDrivingExperienceCoefficientDtoList(
+                ageDrivingExperienceCoefficientMapper.ageDrivingExperienceCoefficientListToAgeDrivingExperienceCoefficientDtoList(
                         ageDrivingExperienceCoefficientService.getAgeDrivingExperienceCoefficientList()));
 
         formFilterInitDto.setBaseRateList(baseRateMapper.baseRateCoefficientListToBaseRateDtoList(
