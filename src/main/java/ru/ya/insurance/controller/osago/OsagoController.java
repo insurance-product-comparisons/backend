@@ -3,10 +3,14 @@ package ru.ya.insurance.controller.osago;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ya.insurance.dto.osago.FormFilterInitDto;
+import ru.ya.insurance.dto.osago.OsagoPolicyDto;
 import ru.ya.insurance.mapper.osago.*;
 import ru.ya.insurance.service.osago.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +31,8 @@ public class OsagoController {
 
     private final KbmCoefficientService kbmCoefficientService;
     private final KbmMapper kbmMapper;
+
+    private final OsagoPolicyService osagoPolicyService;
 
     private final RegionCoefficientService regionCoefficientService;
     private final RegionMapper regionMapper;
@@ -60,6 +66,21 @@ public class OsagoController {
                 seasonCoefficientService.getSeasonCoefficientDtoList()));
 
         return formFilterInitDto;
+    }
+
+    @GetMapping("/policies")
+    public List<OsagoPolicyDto> getOsagoPolicies(
+            @RequestParam(name = "ageRange") String ageRange,
+            @RequestParam(name = "drivingExperienceRange") String drivingExperienceRange,
+            @RequestParam(name = "transportType") String transportType,
+            @RequestParam(name = "driverNumber") String driverNumber,
+            @RequestParam(name = "enginePower") String enginePower,
+            @RequestParam(name = "kbmClass") String kbmClass,
+            @RequestParam(name = "regionName") String regionName,
+            @RequestParam(name = "seasonPeriod") String seasonPeriod) {
+        return osagoPolicyService.calculatePolicyCost(
+                ageRange, drivingExperienceRange, transportType, driverNumber,
+                enginePower, kbmClass, regionName, seasonPeriod);
     }
 
 }
