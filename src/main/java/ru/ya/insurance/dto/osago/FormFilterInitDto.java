@@ -12,12 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FormFilterInitDto {
-    private List<AgeDto> ageList;
-    private List<DrivingExperienceDto> drivingExperienceList;
+
+    private List<AgeDrivingExperienceCoefficientDto> ageDrivingExperienceCoefficientList;
     private List<BaseRateDto> baseRateList;
     private List<EnginePowerDto> enginePowerList;
     private List<DriverNumberDto> driverNumberCoefficientList;
     private List<KbmDto> kbmList;
     private List<RegionDto> regionCoefficientList;
     private List<SeasonCoefficientDto> seasonCoefficientDtoList;
+
 }

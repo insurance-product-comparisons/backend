@@ -10,8 +10,10 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 public class RegionCoefficientDto {
+
     private Long id;
-    private String name;
-    private BigDecimal coefficientExclude;
-    private BigDecimal coefficientInclude;
+    private String region;
+    private BigDecimal vehicleCoefficient;
+    private BigDecimal specialVehicleCoefficient;
+
 }

@@ -14,13 +14,14 @@ public class BaseRateCoefficient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String transportType;
 
     @Column(name = "min_coefficient")
-    private Integer minRate;
+    private Long minRate;
 
     @Column(name = "max_coefficient")
-    private Integer maxRate;
+    private Long maxRate;
+
 }

@@ -8,6 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BaseRateDto {
-    private Integer id;
+
+    private Long id;
     private String transportType;
+    private Long minRate;
+    private Long maxRate;
+
 }
