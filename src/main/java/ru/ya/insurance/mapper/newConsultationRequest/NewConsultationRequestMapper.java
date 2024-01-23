@@ -7,6 +7,7 @@ import ru.ya.insurance.model.newConsultationRequest.NewConsultationRequest;
 @Mapper
 public interface NewConsultationRequestMapper {
 
-    NewConsultationRequestDto newConsultationToNewConsultationDto(NewConsultationRequest newConsultationRequest);
+    NewConsultationRequestDto newConsultationRequestToNewConsultationRequestDto(NewConsultationRequest newConsultationRequest);
 
 }
+
