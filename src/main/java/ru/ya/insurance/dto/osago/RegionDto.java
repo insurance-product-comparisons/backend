@@ -10,7 +10,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class RegionDto {
+
     private Long id;
-    private String name;
-    private List<SubRegionDto> subRegionList;
+    private String region;
+    private List<RegionCoefficientDto> regionCoefficientList;
+
 }

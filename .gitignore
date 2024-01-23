@@ -1,8 +1,12 @@
 HELP.md
+README.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### properties ###
+application.yml
 
 ### STS ###
 .apt_generated

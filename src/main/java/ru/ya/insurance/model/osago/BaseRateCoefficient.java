@@ -1,29 +1,27 @@
 package ru.ya.insurance.model.osago;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "base_rate_coefficient")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "base_rate_coefficient")
 public class BaseRateCoefficient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "transport_type")
     private String transportType;
 
     @Column(name = "min_coefficient")
-    private Integer minRate;
+    private Long minRate;
 
     @Column(name = "max_coefficient")
-    private Integer maxRate;
+    private Long maxRate;
+
 }
