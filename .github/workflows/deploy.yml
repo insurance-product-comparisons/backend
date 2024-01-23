@@ -42,6 +42,13 @@ jobs:
             cd ../..
             echo "done: " >> 23.txt
             date >> 23.txt
+              timeout: 30s
+          command_timeout: 10m
+          proxy_port: 22
+          proxy_timeout: 30s
+        env:
+            JAVA_HOME: /opt/hostedtoolcache/Java_Corretto_jdk/17.0.10-7.1/x64
+            JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Corretto_jdk/17.0.10-7.1/x64
 
       - name: Wait for Java app to start
         run: sleep 30s
