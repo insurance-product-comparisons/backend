@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface DmsRepository extends JpaRepository<Dms, Long> {
 
-    List<Dms> FindAllByAgeAndInsuranceTermAndRegion(int age, int insuranceTerm, String region);
+    List<Dms> findAllByAgeAndInsuranceTermAndRegion(int age, int insuranceTerm, String region);
 }

@@ -22,7 +22,7 @@ public class DmsServiceImpl implements DmsService {
         int insuranceTerm = dmsRequestDto.getInsuranceTerm();
         String region = dmsRequestDto.getRegion();
 
-        List<Dms> dmsList = dmsRepository.FindAllByAgeAndInsuranceTermAndRegion(age, insuranceTerm, region);
+        List<Dms> dmsList = dmsRepository.findAllByAgeAndInsuranceTermAndRegion(age, insuranceTerm, region);
 
         return DmsMapper.toDmsResponseDto(dmsList);
     }
