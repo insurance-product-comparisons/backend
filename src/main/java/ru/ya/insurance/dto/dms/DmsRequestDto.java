@@ -15,13 +15,13 @@ public class DmsRequestDto {
 
     @NotNull
     @PositiveOrZero
-    private final int insuranceTerm;
+    private final int duration;
 
     @NotBlank
     @Size(max = 255)
     private final String region;
 
     @Size(max = 255)
-    private final String settlement;
+    private String settlement;
 
 }

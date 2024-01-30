@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import ru.ya.insurance.model.company.Company;
+import ru.ya.insurance.model.region.Region;
+
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -18,16 +22,15 @@ public class Dms {
     @EqualsAndHashCode.Exclude
     private Long id;
 
-    @Column(name = "age")
-    private int age;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-    @Column(name = "insurance_term")
-    private int insuranceTerm;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    private Region region;
 
-    @Column(name = "region")
-    private String region;
-
-    @Column(name = "settlement")
-    private String settlement;
+    @Column(name = "base_rate")
+    private BigDecimal baseRate;
 
 }

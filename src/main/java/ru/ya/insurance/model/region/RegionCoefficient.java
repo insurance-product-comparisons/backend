@@ -1,4 +1,4 @@
-package ru.ya.insurance.model.osago;
+package ru.ya.insurance.model.region;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,5 +23,7 @@ public class RegionCoefficient {
     private BigDecimal vehicleCoefficient;
 
     private BigDecimal specialVehicleCoefficient;
+
+    private BigDecimal dmsCoefficient;
 
 }

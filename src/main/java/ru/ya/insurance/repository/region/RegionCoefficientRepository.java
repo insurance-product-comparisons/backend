@@ -1,8 +1,8 @@
-package ru.ya.insurance.repository.osago;
+package ru.ya.insurance.repository.region;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.ya.insurance.model.osago.RegionCoefficient;
+import ru.ya.insurance.model.region.RegionCoefficient;
 
 import java.util.Optional;
 

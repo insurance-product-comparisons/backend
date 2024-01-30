@@ -4,7 +4,7 @@ import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import ru.ya.insurance.dto.osago.RegionDto;
-import ru.ya.insurance.model.osago.Region;
+import ru.ya.insurance.model.region.Region;
 
 import java.util.List;
 

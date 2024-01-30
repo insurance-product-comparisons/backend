@@ -5,10 +5,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ya.insurance.dto.dms.DmsRequestDto;
 import ru.ya.insurance.dto.dms.DmsResponseDto;
+import ru.ya.insurance.dto.dms.DmsShortDto;
 import ru.ya.insurance.service.dms.DmsService;
 
 import java.util.List;
@@ -21,9 +23,16 @@ public class DmsController {
 
     private final DmsService dmsService;
 
-    @GetMapping("/car-models")
-    public ResponseEntity<List<DmsResponseDto>> getAll(@Valid DmsRequestDto dmsRequestDto) {
+    @GetMapping
+    public ResponseEntity<List<DmsShortDto>> getAll(@Valid DmsRequestDto dmsRequestDto) {
         return ResponseEntity.ok(dmsService.getAllDms(dmsRequestDto));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DmsResponseDto> getById(@PathVariable Long id,
+                                                  @Valid DmsRequestDto dmsRequestDto
+    ) {
+        return ResponseEntity.ok(dmsService.getDmsById(id, dmsRequestDto));
     }
 
 }

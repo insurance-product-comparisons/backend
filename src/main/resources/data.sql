@@ -676,3 +676,4 @@ VALUES ('Acura', 'TLX', 1.2),
        ('Volvo', 'XC90', 1.5),
        ('Volvo', 'S90', 1.3),
        ('Volvo', 'V60', 1.2);
+
