@@ -1,22 +1,27 @@
 package ru.ya.insurance.mapper.dms;
 
 import lombok.experimental.UtilityClass;
-import ru.ya.insurance.dto.dms.DmsRequestDto;
 import ru.ya.insurance.dto.dms.DmsResponseDto;
+import ru.ya.insurance.dto.dms.DmsShortDto;
 import ru.ya.insurance.model.dms.Dms;
 
-import java.util.Collections;
-import java.util.List;
+import java.math.BigDecimal;
 
 @UtilityClass
 public class DmsMapper {
 
-    public static List<DmsResponseDto> toDmsResponseDto(List<Dms> dmsList) {
-        return Collections.EMPTY_LIST;
+    public static DmsResponseDto toDmsResponseDto(Dms dms) {
+        return new DmsResponseDto(
+                dms.getId(),
+                dms.getCompany().getLogo(),
+                dms.getCompany().getName(),
+                dms.getCompany().getDescription(),
+                dms.getBaseRate()
+        );
     }
 
+    public static DmsShortDto toDmsShortDto(Dms dms, BigDecimal cost) {
+        return new DmsShortDto(dms.getId(), dms.getCompany().getName(), cost);
 
-    public static Dms toDms(DmsRequestDto dmsRequestDto) {
-        return new Dms();
     }
 }
