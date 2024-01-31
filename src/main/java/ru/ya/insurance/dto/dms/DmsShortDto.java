@@ -9,10 +9,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class DmsShortDto {
 
-    private final Long id;
-
     private final String insuranceCompany;
 
-    private BigDecimal cost;
+    private BigDecimal price;
 
+    public DmsShortDto(String insuranceCompany) {
+        this.insuranceCompany = insuranceCompany;
+    }
 }

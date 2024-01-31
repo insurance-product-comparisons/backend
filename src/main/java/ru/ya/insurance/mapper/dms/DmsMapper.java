@@ -21,7 +21,7 @@ public class DmsMapper {
     }
 
     public static DmsShortDto toDmsShortDto(Dms dms, BigDecimal cost) {
-        return new DmsShortDto(dms.getId(), dms.getCompany().getName(), cost);
+        return new DmsShortDto(dms.getCompany().getName(), cost);
 
     }
 }

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "age_dms_coefficients")
+@Table(name = "age_dms_coefficient")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
