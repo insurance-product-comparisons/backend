@@ -3,13 +3,12 @@ package ru.ya.insurance.dto.dms;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
 public class DmsResponseDto {
 
-    private final Long id;
 
     private final String companyLogo;
 
@@ -21,25 +20,21 @@ public class DmsResponseDto {
 
     private int duration;
 
-    private final Set<String> servicesIncluded;
+    private List<String> features;
 
-    private final Set<String> documentsRequired;
+    private Set<String> requiredDocuments;
 
-    private final Set<String> insuranceLicenses;
+    private Set<String> licenses;
 
-    public DmsResponseDto(Long id,
-                          String companyLogo,
-                          String companyName,
-                          String aboutCompany,
-                          BigDecimal price
+    public DmsResponseDto(
+            String companyLogo,
+            String companyName,
+            String aboutCompany,
+            BigDecimal price
     ) {
-        this.id = id;
         this.companyLogo = companyLogo;
         this.companyName = companyName;
         this.aboutCompany = aboutCompany;
         this.price = price;
-        this.servicesIncluded = new HashSet<>();
-        this.documentsRequired = new HashSet<>();
-        this.insuranceLicenses = new HashSet<>();
     }
 }

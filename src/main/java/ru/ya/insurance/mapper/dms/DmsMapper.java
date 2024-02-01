@@ -12,7 +12,6 @@ public class DmsMapper {
 
     public static DmsResponseDto toDmsResponseDto(Dms dms) {
         return new DmsResponseDto(
-                dms.getId(),
                 dms.getCompany().getLogo(),
                 dms.getCompany().getName(),
                 dms.getCompany().getDescription(),

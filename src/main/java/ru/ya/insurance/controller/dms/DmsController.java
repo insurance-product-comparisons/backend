@@ -13,6 +13,7 @@ import ru.ya.insurance.dto.dms.DmsResponseDto;
 import ru.ya.insurance.dto.dms.DmsShortDto;
 import ru.ya.insurance.service.dms.DmsService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -28,11 +29,12 @@ public class DmsController {
         return ResponseEntity.ok(dmsService.getAllDms(dmsRequestDto));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<DmsResponseDto> getByName(@RequestParam Long id,
-                                                    @Valid DmsRequestDto dmsRequestDto
+    @GetMapping("/card")
+    public ResponseEntity<DmsResponseDto> getCard(@RequestParam BigDecimal price,
+                                                  @RequestParam String insuranceCompany,
+                                                  @Valid DmsRequestDto dmsRequestDto
     ) {
-        return ResponseEntity.ok(dmsService.getDmsById(id, dmsRequestDto));
+        return ResponseEntity.ok(dmsService.getCard(price, insuranceCompany, dmsRequestDto));
     }
 
 }
