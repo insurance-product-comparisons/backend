@@ -678,5 +678,5 @@ VALUES ('Acura', 'TLX', 1.2),
        ('Volvo', 'V60', 1.2);
 
 INSERT INTO users (username, password, email, role)
-VALUES ('bob', 'bob', 'bob@bob.ru', 'ROLE_ADMIN'),
-        ('ted', 'ted', 'ted@ted.ru', 'ROLE_USER');
+VALUES ('bob', '$2a$12$GUxJ6BWvkjIQPHvln55tTuzXdKTIZ78LleKDOC/kDaMIxPEP7JG4i', 'bob@bob.ru', 'ROLE_ADMIN'),
+       ('ted', '$2a$12$4FPiqxkRCdfwSSwykbd/HePa3znWYrIp48tEOJMfiORzqIzT/EVI2', 'ted@ted.ru', 'ROLE_USER');
