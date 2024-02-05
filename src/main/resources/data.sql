@@ -676,3 +676,7 @@ VALUES ('Acura', 'TLX', 1.2),
        ('Volvo', 'XC90', 1.5),
        ('Volvo', 'S90', 1.3),
        ('Volvo', 'V60', 1.2);
+
+INSERT INTO users (username, password, email, role)
+VALUES ('bob', 'bob', 'bob@bob.ru', 'ROLE_ADMIN'),
+        ('ted', 'ted', 'ted@ted.ru', 'ROLE_USER');
