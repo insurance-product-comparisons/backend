@@ -22,6 +22,6 @@ public class UserController {
     @PostMapping("/register")
     public String perfomRegistration(@Valid User user) {
         userService.register(user);
-        return "redirect:/auth/login";
+        return "Registration successful";
     }
 }

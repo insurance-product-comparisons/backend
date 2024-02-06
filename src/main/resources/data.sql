@@ -677,6 +677,10 @@ VALUES ('Acura', 'TLX', 1.2),
        ('Volvo', 'S90', 1.3),
        ('Volvo', 'V60', 1.2);
 
-INSERT INTO users (username, password, email, role)
-VALUES ('bob', '$2a$12$GUxJ6BWvkjIQPHvln55tTuzXdKTIZ78LleKDOC/kDaMIxPEP7JG4i', 'bob@bob.ru', 'ROLE_ADMIN'),
-       ('ted', '$2a$12$4FPiqxkRCdfwSSwykbd/HePa3znWYrIp48tEOJMfiORzqIzT/EVI2', 'ted@ted.ru', 'ROLE_USER');
+INSERT INTO users (username, password, email, role, enabled)
+VALUES ('bob', 'bob', 'bob@bob.ru', 'ROLE_ADMIN', true),
+       ('ted', '$2a$12$4FPiqxkRCdfwSSwykbd/HePa3znWYrIp48tEOJMfiORzqIzT/EVI2', 'ted@ted.ru', 'ROLE_USER', true);
+
+INSERT INTO authorities (username, authority)
+VALUES ('bob', 'WRITE_PRIVILEGE'),
+       ('ted', 'READ_PRIVILEGE');
