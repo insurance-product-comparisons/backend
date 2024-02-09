@@ -11,9 +11,5 @@ public interface DmsService {
 
     List<DmsShortDto> getAllDms(DmsRequestDto dmsRequestDto);
 
-    DmsResponseDto getDmsById(Long id, DmsRequestDto dmsRequestDto);
-
-    DmsResponseDto getDmsById(Long id, int age, int duration);
-
     DmsResponseDto getCard(BigDecimal price, String name, DmsRequestDto dmsRequestDto);
 }

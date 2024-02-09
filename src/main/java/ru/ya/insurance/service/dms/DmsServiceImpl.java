@@ -7,7 +7,6 @@ import ru.ya.insurance.dto.dms.DmsResponseDto;
 import ru.ya.insurance.dto.dms.DmsShortDto;
 import ru.ya.insurance.enums.InsuranceType;
 import ru.ya.insurance.exception.NotFoundException;
-import ru.ya.insurance.mapper.dms.DmsMapper;
 import ru.ya.insurance.model.company.Company;
 import ru.ya.insurance.model.dms.AgeDmsCoefficient;
 import ru.ya.insurance.model.dms.Dms;
@@ -54,22 +53,6 @@ public class DmsServiceImpl implements DmsService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public DmsResponseDto getDmsById(Long id, DmsRequestDto dmsRequestDto) {
-        return null;
-    }
-
-    @Override
-    public DmsResponseDto getDmsById(Long id, int age, int duration) {
-        Dms dms = dmsRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Dms not found"));
-
-        DmsResponseDto dmsResponseDto = DmsMapper.toDmsResponseDto(dms);
-
-        dmsResponseDto.setPrice(calculate(dms, age, duration));
-
-        return dmsResponseDto;
-    }
 
     @Override
     public DmsResponseDto getCard(BigDecimal price, String name, DmsRequestDto dmsRequestDto) {
@@ -77,11 +60,13 @@ public class DmsServiceImpl implements DmsService {
         Company insuranceCompany = companyRepository.findByName(name)
                 .orElseThrow(() -> new NotFoundException("Insurance company not found"));
 
+        BigDecimal newPrice = calculate(dmsRequestDto, insuranceCompany);
+
         DmsResponseDto result = new DmsResponseDto(
                 insuranceCompany.getLogo(),
                 insuranceCompany.getName(),
                 insuranceCompany.getDescription(),
-                price
+                newPrice
         );
 
         result.setDuration(dmsRequestDto.getDuration());
