@@ -9,7 +9,6 @@ import java.util.Set;
 @Data
 public class DmsResponseDto {
 
-
     private final String companyLogo;
 
     private final String companyName;
@@ -30,11 +29,11 @@ public class DmsResponseDto {
             String companyLogo,
             String companyName,
             String aboutCompany,
-            BigDecimal price
-    ) {
+            BigDecimal price) {
         this.companyLogo = companyLogo;
         this.companyName = companyName;
         this.aboutCompany = aboutCompany;
         this.price = price;
     }
+
 }
