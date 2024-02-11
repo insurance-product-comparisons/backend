@@ -46,15 +46,12 @@ public class KaskoPolicyServiceImpl implements KaskoPolicyService {
 
         List<Company> insuranceCompanies = getAllInsuranceCompanies();
 
-        for (int i = 0; i < 10; i++) {
+        insuranceCompanies.forEach(company -> {
             KaskoPolicyDto policyDTO = new KaskoPolicyDto();
 
-            Company selectedCompany = insuranceCompanies.get(i);
-            String companyName = insuranceCompanies.get(i).getName();
+            policyDTO.setInsuranceCompany(company.getName());
 
-            policyDTO.setInsuranceCompany(companyName);
-
-            BigDecimal insuranceCompanyCorrectionCoefficient = selectedCompany.getCoefficient();
+            BigDecimal insuranceCompanyCorrectionCoefficient = company.getCoefficient();
 
             BigDecimal baseKaskoPolicyPrice = BigDecimal.valueOf(3000);
             BigDecimal cost = baseKaskoPolicyPrice
@@ -65,7 +62,7 @@ public class KaskoPolicyServiceImpl implements KaskoPolicyService {
 
             policyDTO.setCost(cost.setScale(2, RoundingMode.HALF_UP));
             policies.add(policyDTO);
-        }
+        });
 
         return policies;
     }
