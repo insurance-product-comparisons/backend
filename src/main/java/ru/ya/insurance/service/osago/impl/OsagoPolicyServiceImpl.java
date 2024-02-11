@@ -6,8 +6,10 @@ import ru.ya.insurance.dto.osago.OsagoPolicyDto;
 import ru.ya.insurance.exception.NotFoundException;
 import ru.ya.insurance.model.company.Company;
 import ru.ya.insurance.model.osago.*;
+import ru.ya.insurance.model.region.RegionCoefficient;
 import ru.ya.insurance.repository.company.CompanyRepository;
 import ru.ya.insurance.repository.osago.*;
+import ru.ya.insurance.repository.region.RegionCoefficientRepository;
 import ru.ya.insurance.service.osago.OsagoPolicyService;
 
 import java.math.BigDecimal;

@@ -24,4 +24,8 @@ public class RequiredDocument {
 
     @EqualsAndHashCode.Include
     private String document;
+
+    public RequiredDocument(String document) {
+        this.document = document;
+    }
 }
