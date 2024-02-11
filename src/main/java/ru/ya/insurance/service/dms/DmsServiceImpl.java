@@ -9,7 +9,6 @@ import ru.ya.insurance.enums.InsuranceType;
 import ru.ya.insurance.exception.NotFoundException;
 import ru.ya.insurance.model.company.Company;
 import ru.ya.insurance.model.dms.AgeDmsCoefficient;
-import ru.ya.insurance.model.dms.Dms;
 import ru.ya.insurance.model.insurance.Feature;
 import ru.ya.insurance.model.insurance.Insurance;
 import ru.ya.insurance.model.insurance.RequiredDocument;
@@ -20,6 +19,7 @@ import ru.ya.insurance.repository.dms.DmsRepository;
 import ru.ya.insurance.repository.region.RegionCoefficientRepository;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -60,7 +60,7 @@ public class DmsServiceImpl implements DmsService {
         Company insuranceCompany = companyRepository.findByName(name)
                 .orElseThrow(() -> new NotFoundException("Insurance company not found"));
 
-        BigDecimal newPrice = calculate(dmsRequestDto, insuranceCompany);
+        BigDecimal newPrice = calculate(dmsRequestDto, insuranceCompany).setScale(2, RoundingMode.HALF_UP);
 
         DmsResponseDto result = new DmsResponseDto(
                 insuranceCompany.getLogo(),
@@ -118,20 +118,8 @@ public class DmsServiceImpl implements DmsService {
                 .multiply(regionCoefficient.getDmsCoefficient())
                 .multiply(companyCoefficient)
                 .multiply(BigDecimal.valueOf(duration))
-                .multiply(ageDmsCoefficient.getCoefficient());
+                .multiply(ageDmsCoefficient.getCoefficient())
+                .setScale(2, RoundingMode.HALF_UP);
     }
-
-    private BigDecimal calculate(Dms dms, int age, int duration) {
-
-        AgeDmsCoefficient ageDmsCoefficient = ageDmsCoefficientRepository.findByAge(age)
-                .orElseThrow(() -> new NotFoundException("Coefficient for the age " + age + " not found"));
-
-        return dms.getBaseRate()
-                .multiply(dms.getRegion().getDmsCoefficient())
-                .multiply(dms.getCompany().getCoefficient())
-                .multiply(BigDecimal.valueOf(duration))
-                .multiply(ageDmsCoefficient.getCoefficient());
-    }
-
 
 }

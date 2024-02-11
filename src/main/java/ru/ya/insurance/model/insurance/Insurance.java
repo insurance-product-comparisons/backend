@@ -53,4 +53,10 @@ public class Insurance {
     @JsonBackReference
     @EqualsAndHashCode.Exclude
     private Set<ValidityPeriod> validityPeriods;
+
+    public Insurance(InsuranceType type, Set<Feature> features, Set<RequiredDocument> requiredDocuments) {
+        this.type = type;
+        this.features = features;
+        this.requiredDocuments = requiredDocuments;
+    }
 }

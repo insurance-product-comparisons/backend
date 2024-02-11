@@ -26,4 +26,9 @@ public class RegionCoefficient {
 
     private BigDecimal dmsCoefficient;
 
+    public RegionCoefficient(Long id, String region, BigDecimal dmsCoefficient) {
+        this.id = id;
+        this.region = region;
+        this.dmsCoefficient = dmsCoefficient;
+    }
 }
