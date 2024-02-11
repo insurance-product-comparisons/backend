@@ -76,6 +76,7 @@ VALUES (1, 'Ущерб от ДТП',
        (3, 'ИМЯ4', 'Выезд терапевта/педиатра, больничный лист, рецепты (кроме льготных)'),
        (3, 'ИМЯ5', 'Консультации психотерапевта (очно или видеконсультация)');
 
+
 INSERT INTO validity_periods (insurance_id, validity_period)
 VALUES (1, 30),
        (1, 90),
@@ -699,10 +700,76 @@ VALUES ('Acura', 'TLX', 1.2),
        ('Volvo', 'XC60', 1.4),
        ('Volvo', 'XC90', 1.5),
        ('Volvo', 'S90', 1.3),
-       ('Volvo', 'V60', 1.2);
+       ('Volvo', 'V60', 1.2),
+
+       ('Ducati', 'Panigale V4', 0.8),
+       ('Ducati', 'Monster 821', 0.7),
+       ('Ducati', 'Scrambler Icon', 0.6),
+       ('Ducati', 'Diavel 1260', 0.7),
+       ('Ducati', 'Multistrada 950', 0.6),
+
+       ('Harley-Davidson', 'Sportster', 0.6),
+       ('Harley-Davidson', 'Street Glide', 0.7),
+       ('Harley-Davidson', 'Softail Fat Boy', 0.6),
+       ('Harley-Davidson', 'Road King', 0.7),
+       ('Harley-Davidson', 'Electra Glide', 0.8),
+
+       ('Honda', 'Africa Twin', 0.8),
+       ('Honda', 'CBR600RR', 0.7),
+       ('Honda', 'CBR1000RR', 0.7),
+       ('Honda', 'CBR500R', 0.6),
+       ('Honda', 'Rebel 500', 0.6),
+
+       ('Kawasaki', 'Ninja ZX-6R', 0.6),
+       ('Kawasaki', 'Ninja 400', 0.7),
+       ('Kawasaki', 'Ninja 650', 0.6),
+       ('Kawasaki', 'Versys 650', 0.8),
+       ('Kawasaki', 'Z900', 0.7),
+
+       ('Yamaha', 'FZ6R', 0.7),
+       ('Yamaha', 'MT-09', 0.6),
+       ('Yamaha', 'MT-07', 0.6),
+       ('Yamaha', 'YZF-R6', 0.7),
+       ('Yamaha', 'YZF-R1', 0.8);
+
+
+INSERT INTO kasko_driving_experience_coefficient (driving_experience_range, coefficient)
+VALUES ('0-5', 5.00),
+       ('6-10', 4.45),
+       ('11-15', 3.90),
+       ('16-20', 3.35),
+       ('21-25', 2.80),
+       ('26-30', 2.25),
+       ('31-35', 1.70),
+       ('36-40', 1.00),
+       ('41-45', 1.45),
+       ('46-50', 1.90),
+       ('51-55', 2.35),
+       ('56-60', 2.80),
+       ('61-65', 3.25),
+       ('66-70', 3.70),
+       ('71-75', 4.15),
+       ('76-80', 4.60),
+       ('81+', 5.00);
+
+
+INSERT INTO kasko_manufacture_year_coefficient (manufacture_year, coefficient)
+VALUES (2024, 3.00),
+       (2023, 2.80),
+       (2022, 2.60),
+       (2021, 2.40),
+       (2020, 2.20),
+       (2019, 2.00),
+       (2018, 1.80),
+       (2017, 1.60),
+       (2016, 1.40),
+       (2015, 1.20),
+       (2014, 1.00);
+
 
 INSERT INTO dms_base_rate (base_rate)
 VALUES (10000);
+
 
 INSERT INTO age_dms_coefficient (age, coefficient)
 VALUES (0, 1),
@@ -833,4 +900,3 @@ VALUES (0, 1),
        (125, 10),
        (126, 10),
        (127, 10);
-
