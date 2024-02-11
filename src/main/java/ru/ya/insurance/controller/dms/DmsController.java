@@ -32,8 +32,7 @@ public class DmsController {
     @GetMapping("/card")
     public ResponseEntity<DmsResponseDto> getCard(@RequestParam BigDecimal price,
                                                   @RequestParam String insuranceCompany,
-                                                  @Valid DmsRequestDto dmsRequestDto
-    ) {
+                                                  @Valid DmsRequestDto dmsRequestDto) {
         return ResponseEntity.ok(dmsService.getCard(price, insuranceCompany, dmsRequestDto));
     }
 

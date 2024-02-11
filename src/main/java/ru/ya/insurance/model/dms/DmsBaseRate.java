@@ -12,23 +12,15 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-@Table(name = "dms_insurance")
+@Table(name = "dms_base_rate")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dms {
+public class DmsBaseRate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    private Company company;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id")
-    private Region region;
 
     @Column(name = "base_rate")
     private BigDecimal baseRate;

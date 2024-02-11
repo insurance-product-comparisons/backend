@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Table(name = "region_coefficient")
 public class RegionCoefficient {
 

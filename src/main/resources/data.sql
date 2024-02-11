@@ -702,7 +702,7 @@ VALUES ('Acura', 'TLX', 1.2),
        ('Volvo', 'V60', 1.2);
 
 INSERT INTO dms_base_rate (base_rate)
-VALUES (10000);
+VALUES (1000);
 
 INSERT INTO age_dms_coefficient (age, coefficient)
 VALUES (0, 1),

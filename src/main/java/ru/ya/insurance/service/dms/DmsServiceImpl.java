@@ -9,13 +9,14 @@ import ru.ya.insurance.enums.InsuranceType;
 import ru.ya.insurance.exception.NotFoundException;
 import ru.ya.insurance.model.company.Company;
 import ru.ya.insurance.model.dms.AgeDmsCoefficient;
+import ru.ya.insurance.model.dms.DmsBaseRate;
 import ru.ya.insurance.model.insurance.Feature;
 import ru.ya.insurance.model.insurance.Insurance;
 import ru.ya.insurance.model.insurance.RequiredDocument;
 import ru.ya.insurance.model.region.RegionCoefficient;
 import ru.ya.insurance.repository.company.CompanyRepository;
 import ru.ya.insurance.repository.dms.AgeDmsCoefficientRepository;
-import ru.ya.insurance.repository.dms.DmsRepository;
+import ru.ya.insurance.repository.dms.DmsBaseRateRepository;
 import ru.ya.insurance.repository.region.RegionCoefficientRepository;
 
 import java.math.BigDecimal;
@@ -30,7 +31,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class DmsServiceImpl implements DmsService {
 
-    private final DmsRepository dmsRepository;
+    private final DmsBaseRateRepository dmsBaseRateRepository;
 
     private final RegionCoefficientRepository regionCoefficientRepository;
 
@@ -111,8 +112,10 @@ public class DmsServiceImpl implements DmsService {
 
         BigDecimal companyCoefficient = company.getCoefficient();
 
-        BigDecimal baseRate = BigDecimal.valueOf(5000);
+        DmsBaseRate dmsBaseRate = dmsBaseRateRepository.getDmsBaseRate()
+                .orElseThrow(() -> new NotFoundException("DMS base rate not found"));
 
+        BigDecimal baseRate = dmsBaseRate.getBaseRate();
 
         return baseRate
                 .multiply(regionCoefficient.getDmsCoefficient())
