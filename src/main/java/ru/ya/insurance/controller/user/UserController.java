@@ -24,7 +24,7 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public String register (@Valid UserDto userDto) {
+    public String register(@Valid UserDto userDto) {
         User user = userMapper.userDtoToUser(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userService.register(user);

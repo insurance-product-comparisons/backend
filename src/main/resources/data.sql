@@ -900,7 +900,7 @@ VALUES (0, 1),
        (125, 10),
        (126, 10),
        (127, 10);
-       ('Volvo', 'V60', 1.2);
+    ('Volvo', 'V60', 1.2);
 
 INSERT INTO users (username, password, email, role, enabled)
 VALUES ('bob', 'bob', 'bob@bob.ru', 'ROLE_ADMIN', true),
