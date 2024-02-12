@@ -1,10 +1,7 @@
 package ru.ya.insurance.model.kasko;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -25,5 +22,9 @@ public class KaskoCarModel {
     private String model;
 
     private BigDecimal coefficient;
+
+    public KaskoCarModel(BigDecimal coefficient) {
+        this.coefficient = coefficient;
+    }
 
 }

@@ -25,4 +25,7 @@ public class KbmCoefficient {
 
     private BigDecimal coefficient;
 
+    public KbmCoefficient(BigDecimal coefficient) {
+        this.coefficient = coefficient;
+    }
 }
