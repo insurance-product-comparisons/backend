@@ -24,4 +24,7 @@ public class SeasonCoefficient {
 
     private BigDecimal coefficient;
 
+    public SeasonCoefficient(BigDecimal coefficient) {
+        this.coefficient = coefficient;
+    }
 }
