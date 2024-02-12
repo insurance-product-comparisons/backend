@@ -16,7 +16,6 @@ DROP TABLE IF EXISTS
     new_consultation_request,
     season_coefficient,
     kasko_car_models,
-    dms_insurance,
     users,
     authorities
     CASCADE;
