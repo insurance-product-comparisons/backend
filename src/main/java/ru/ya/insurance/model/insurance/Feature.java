@@ -28,4 +28,8 @@ public class Feature {
 
     @Column(name = "feature_description")
     private String description;
+
+    public Feature(String name) {
+        this.name = name;
+    }
 }
