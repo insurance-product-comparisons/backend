@@ -1,6 +1,6 @@
 package ru.ya.insurance.service.osago;
 
-import ru.ya.insurance.model.osago.Region;
+import ru.ya.insurance.model.region.Region;
 
 import java.util.List;
 

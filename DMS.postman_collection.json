@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "51ccf2aa-1ca0-441e-a7a5-0dd7a7e7d3e9",
+		"name": "DMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26814628"
+	},
+	"item": [
+		{
+			"name": "Wrong age request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dms?age=-1&duration=12&region=Москва",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dms"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "-1"
+						},
+						{
+							"key": "duration",
+							"value": "12"
+						},
+						{
+							"key": "region",
+							"value": "Москва"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong region request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dms?age=1&duration=6&region=Blablabla",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dms"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "1"
+						},
+						{
+							"key": "duration",
+							"value": "6"
+						},
+						{
+							"key": "region",
+							"value": "Blablabla"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong duration request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dms?age=1&duration=-1&region=Москва",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dms"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "1"
+						},
+						{
+							"key": "duration",
+							"value": "-1"
+						},
+						{
+							"key": "region",
+							"value": "Москва"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correct request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Test list user response\", function () {\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length, 'List length must be 10').to.eql(10);\r",
+							"});\r",
+							"pm.test(\"Test fields\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0]).to.have.property('insuranceCompany');\r",
+							"    pm.expect(jsonData[0]).to.have.property('price');\r",
+							"    pm.expect(jsonData[9]).to.have.property('insuranceCompany');\r",
+							"    pm.expect(jsonData[9]).to.have.property('price');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dms?age=1&duration=6&region=Горно-Алтайск",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dms"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "1"
+						},
+						{
+							"key": "duration",
+							"value": "6"
+						},
+						{
+							"key": "region",
+							"value": "Горно-Алтайск"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correct request for Card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Test list user response\", function () {\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"});\r",
+							"pm.test(\"Test fields\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('companyName');\r",
+							"    pm.expect(jsonData).to.have.property('companyLogo');\r",
+							"    pm.expect(jsonData).to.have.property('aboutCompany');\r",
+							"    pm.expect(jsonData).to.have.property('requiredDocuments');\r",
+							"    pm.expect(jsonData).to.have.property('licenses');\r",
+							"    pm.expect(jsonData).to.have.property('price');\r",
+							"    pm.expect(jsonData).to.have.property('duration');\r",
+							"    pm.expect(jsonData).to.have.property('features');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dms/card?age=1&duration=6&region=Горно-Алтайск&price=45012&insuranceCompany=АльфаСтрахование",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dms",
+						"card"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "1"
+						},
+						{
+							"key": "duration",
+							"value": "6"
+						},
+						{
+							"key": "region",
+							"value": "Горно-Алтайск"
+						},
+						{
+							"key": "price",
+							"value": "45012"
+						},
+						{
+							"key": "insuranceCompany",
+							"value": "АльфаСтрахование"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

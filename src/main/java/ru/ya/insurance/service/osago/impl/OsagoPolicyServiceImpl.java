@@ -6,8 +6,10 @@ import ru.ya.insurance.dto.osago.OsagoPolicyDto;
 import ru.ya.insurance.exception.NotFoundException;
 import ru.ya.insurance.model.company.Company;
 import ru.ya.insurance.model.osago.*;
+import ru.ya.insurance.model.region.RegionCoefficient;
 import ru.ya.insurance.repository.company.CompanyRepository;
 import ru.ya.insurance.repository.osago.*;
+import ru.ya.insurance.repository.region.RegionCoefficientRepository;
 import ru.ya.insurance.service.osago.OsagoPolicyService;
 
 import java.math.BigDecimal;
@@ -65,15 +67,12 @@ public class OsagoPolicyServiceImpl implements OsagoPolicyService {
 
         List<Company> insuranceCompanies = getAllInsuranceCompanies();
 
-        for (int i = 0; i < 10; i++) {
+        insuranceCompanies.forEach(company -> {
             OsagoPolicyDto policyDTO = new OsagoPolicyDto();
 
-            Company selectedCompany = insuranceCompanies.get(i);
-            String companyName = insuranceCompanies.get(i).getName();
+            policyDTO.setInsuranceCompany(company.getName());
 
-            policyDTO.setInsuranceCompany(companyName);
-
-            BigDecimal insuranceCompanyCorrectionCoefficient = selectedCompany.getCoefficient();
+            BigDecimal insuranceCompanyCorrectionCoefficient = company.getCoefficient();
 
             BigDecimal cost = ageDrivingExperienceCoefficient.getCoefficient()
                     .multiply(BigDecimal.valueOf(baseRateCoefficient.getMinRate()))
@@ -86,7 +85,7 @@ public class OsagoPolicyServiceImpl implements OsagoPolicyService {
 
             policyDTO.setCost(cost.setScale(2, RoundingMode.HALF_UP));
             policies.add(policyDTO);
-        }
+        });
 
         return policies;
     }
