@@ -33,7 +33,7 @@ public class ErrorHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleValidationException(final Exception e) {
         logger.error("Server error: {}", e.getMessage());
-        return new ErrorResponse("See logs for more information.");
+        return new ErrorResponse("Please validate your data");
     }
 
     @ExceptionHandler({

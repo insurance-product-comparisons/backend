@@ -900,3 +900,12 @@ VALUES (0, 1),
        (125, 10),
        (126, 10),
        (127, 10);
+    ('Volvo', 'V60', 1.2);
+
+INSERT INTO users (username, password, email, role, enabled)
+VALUES ('bob', 'bob', 'bob@bob.ru', 'ROLE_ADMIN', true),
+       ('ted', '$2a$12$4FPiqxkRCdfwSSwykbd/HePa3znWYrIp48tEOJMfiORzqIzT/EVI2', 'ted@ted.ru', 'ROLE_USER', true);
+
+INSERT INTO authorities (username, authority)
+VALUES ('bob', 'WRITE_PRIVILEGE'),
+       ('ted', 'READ_PRIVILEGE');
